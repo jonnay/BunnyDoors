@@ -1,0 +1,36 @@
+** PROJECT 0.1 Release
+*** PROJECT Outputs data to the console when a user uses a door 
+	- Some kind of door identifier 
+	- location of door (if needed)
+*** PROJECT Set up a command ~/bunnydoor info~ Outputs to the console the door that the user is looking at 
+** PROJECT 0.2 Release
+*** PROJECT 3 Basic permission nodes: (With a nod to the Dragon Quest series)  
+	   - ~door.key.thiefkey~
+	   - ~door.key.magickey~
+	   - ~door.key.finalkey~
+*** PROJECT Storage of door properties inside of a yml file 
+*** PROJECT  ~/bunnydoor lock <key>~ locks the door with the given key (i.e. thiefkey, magickey, finalkey)
+*** PROJECT Actually prevent users from using a door when they don't have a key, and give them a message.
+** PROJECT 0.3 Release
+*** PROJECT Keep a queue of most recently used doors in memory perhaps (to avoid costly lookups?)
+	- all doors in the queue
+	- user-changeable in the config, so large servers can use more memory on queue, small servers less
+*** PROJECT when a door is modified it should throw event
+	- remove changed doors from queue 
+** PROJECT 1.0 Fix bugs from previous releases
+** Future Features
+*** SOMEDAY Custom lock messages!
+*** SOMEDAY Non-indentifiable locks! ("This door is locked" vs "This door is locked, you need the iron key.")
+*** SOMEDAY Add custom permission nodes right within the game!
+*** SOMEDAY Lock chests with keys!
+*** SOMEDAY Allow opening of iron doors with use, if the key is held!
+*** SOMEDAY ~/bunnydoor list~ to list keys~
+*** SOMEDAY optional spoutcraft integration, to show keys in the inventory screen on the side!
+*** SOMEDAY selectable persistence!  Yaml, sqlite or MySQL!
+*** SOMEDAY herocraft lockpicking skill?
+
+   - v0.1 ::
+
+   - v0.2 :: 
+   - Future Versions ::
+

@@ -1,0 +1,57 @@
+* Jonnays First Ever Plugin Foray!
+** Yay!
+   This plugin is my first ever (not-modifying-someone-elses) plugin.
+
+   While I am not the worlds greatest Java developer, I have been writing code in some form or another for decades.  
+
+   I've been wanting doors-with-permissions for long.  There is a plugin that supposedly allows keys and doors, and... effectively SOUNDS
+   awesome, but the developers are busy, and wont release it.
+
+   So here is an open source plugin that adds permissions to specific doors.  So say you wanted to make a standard RPG-esque door that is
+   only open-able by a key, you would set a door with a permission like doors.key.ironkey.  To give a player an iron key, you would grant
+   them the permission doors.key.ironkey.
+
+   With a plugin like citizens, you could grant them that permission after completing a quest!
+
+** Open source!
+   I am leaning pllugin development by looking at other peoples source, and basically standing upon the shoulders of bukkit giants. So NOT
+   making this plugin open source would be insane, and kinda lame.
+
+   Source code, such as it is:  https://github.com/jonnay/BunnyDoors
+
+** It's only the beginning.
+   No code yet. :(
+
+   Instead of large grand plans, I have a set of very small discreet releases planned.  If anyone wants to help, they are more then welcome
+   to fork the repo, and I will pull the changes (assuming they work).  Please feel free down download an contribute.  
+
+** Roadmap:
+   - v0.1 ::
+	 - Internal release only!
+	 - Outputs data to the console when a user uses a door 
+	   - Some kind of door identifier 
+	   - location of door (if needed)
+	 - Set up a command ~/bunnydoor info~ Outputs to the console the door that the user is looking at 
+   - v0.2 :: 
+     - 3 Basic permission nodes: (With a nod to the Dragon Quest series)  
+	   - ~door.key.thiefkey~
+	   - ~door.key.magickey~
+	   - ~door.key.finalkey~
+	 - Storage of door properties inside of a yml file 
+     - ~/bunnydoor lock <key>~ locks the door with the given key (i.e. thiefkey, magickey, finalkey)
+	 - Actually prevent users from using a door when they don't have a key, and give them a message.
+   - v0.3 :: 
+	 - Optimization release 
+	 - Keep a queue of most recently used doors in memory perhaps (to avoid costly lookups?)
+	   - when a door is modified/created it should throw event
+   - Future Versions ::
+	 - Custom lock messages!
+	 - Non-indentifiable locks! ("This door is locked" vs "This door is locked, you need the iron key.")
+	 - Add custom permission nodes right within the game!
+	 - Lock chests with keys!
+	 - Allow opening of iron doors with use, if the key is held!
+	 - ~/bunnydoor list~ to list keys~
+	 - optional spoutcraft integration, to show keys in the inventory screen on the side!
+	 - selectable persistence!  Yaml, sqlite or MySQL!
+	 - herocraft lockpicking skill?
+
