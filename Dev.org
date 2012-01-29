@@ -2,6 +2,10 @@
 *** PROJECT Outputs data to the console when a user uses a door 
 	- Some kind of door identifier 
 	- location of door (if needed)
+	  Interacting with doors isn't well documented, thank god for LWC
+	  https://github.com/Hidendra/LWC/tree/master/src/main/java/com/griefcraft/listeners
+	  https://github.com/Hidendra/LWC/blob/master/src/main/java/com/griefcraft/util/matchers/DoorMatcher.java
+
 *** PROJECT Set up a command ~/bunnydoor info~ Outputs to the console the door that the user is looking at 
 ** PROJECT 0.2 Release
 *** PROJECT 3 Basic permission nodes: (With a nod to the Dragon Quest series)  
