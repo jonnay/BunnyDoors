@@ -5,3 +5,5 @@
 /target/classes/net/jonnay/bunnydoors/BunnyDoorsCommandExecutor.class
 /target/classes/net/jonnay/bunnydoors/DoorListener.class
 /target/maven-archiver/pom.properties
+/liveServerConfig
+/target/*

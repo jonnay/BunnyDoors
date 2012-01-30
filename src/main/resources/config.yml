@@ -1,0 +1,9 @@
+
+# BunnyDoors Configuration File
+# Right now there is just a list of available keys.  Super easy.
+#
+# (notice the nod to Dragon Quest!)
+keys:
+  - thief
+  - magic
+  - final

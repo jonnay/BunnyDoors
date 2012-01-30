@@ -3,7 +3,7 @@
 	<artifactId>BunnyDoors</artifactId>
 	<packaging>jar</packaging>
     <groupId>jonnay.bunnydoors</groupId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <name>Bunny Doors</name>
     <url>https://github.com/jonnay/BunnyDoors</url>
     <description></description>
@@ -56,7 +56,8 @@
 				<directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <includes>
-                    <!--<include>config.yml</include>-->
+                    <include>config.yml</include>
+					<include>serializedDoors.yml</include>
                     <include>plugin.yml</include>					
                 </includes>
             </resource>
