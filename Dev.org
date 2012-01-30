@@ -1,12 +1,13 @@
 ** PROJECT 0.1 Release
-*** PROJECT Outputs data to the console when a user uses a door 
+*** FINISHED Outputs data to the console when a user uses a door
+	 CLOSED: [2012-01-29 Sun 15:29]
 	- Some kind of door identifier 
 	- location of door (if needed)
 	  Interacting with doors isn't well documented, thank god for LWC
 	  https://github.com/Hidendra/LWC/tree/master/src/main/java/com/griefcraft/listeners
 	  https://github.com/Hidendra/LWC/blob/master/src/main/java/com/griefcraft/util/matchers/DoorMatcher.java
-
 *** PROJECT Set up a command ~/bunnydoor info~ Outputs to the console the door that the user is looking at 
+
 ** PROJECT 0.2 Release
 *** PROJECT 3 Basic permission nodes: (With a nod to the Dragon Quest series)  
 	   - ~door.key.thiefkey~
@@ -38,3 +39,81 @@
    - v0.2 :: 
    - Future Versions ::
 
+
+
+* Build
+
+#+begin_src emacs-lisp 
+(save-excursion
+ (set-buffer "Readme.org")
+
+ (org-export-as-ascii 3))
+(mcstat-run-minecraft)
+(pop-to-buffer "*mcstat-mc*")
+#+end_src
+
+#+results:
+
+
+#+begin_src sh :results output
+mvn install
+cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
+
+#+end_src
+
+#+results:
+#+begin_example
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Bunny Doors 0.1.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ BunnyDoors ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ BunnyDoors ---
+[INFO] Compiling 1 source file to /Users/jonathana/projects/BunnyDoors/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4.3:testResources (default-testResources) @ BunnyDoors ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/jonathana/projects/BunnyDoors/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ BunnyDoors ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.7.2:test (default-test) @ BunnyDoors ---
+[INFO] No tests to run.
+[INFO] Surefire report directory: /Users/jonathana/projects/BunnyDoors/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+There are no tests to run.
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.1:jar (default-jar) @ BunnyDoors ---
+[INFO] Building jar: /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ BunnyDoors ---
+[INFO] Installing /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.1.0/BunnyDoors-0.1.0.jar
+[INFO] Installing /Users/jonathana/projects/BunnyDoors/pom.xml to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.1.0/BunnyDoors-0.1.0.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.864s
+[INFO] Finished at: Sun Jan 29 17:44:57 MST 2012
+[INFO] Final Memory: 9M/81M
+[INFO] ------------------------------------------------------------------------
+target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
+#+end_example
+
+* Giants
+  - Helpers at #bukkitdev
+  - McMMO devs for providing a decent pom.xml
+  - LWC devs

@@ -25,9 +25,13 @@
    Instead of large grand plans, I have a set of very small discreet releases planned.  If anyone wants to help, they are more then welcome
    to fork the repo, and I will pull the changes (assuming they work).  Please feel free down download an contribute.  
 
+** Installation
+   Easy, put the plugin in /plugins.  Done.
 ** Commands
 
-   No Code? No Commands.
+   - /bunnydoor lockall :: Lock ALL the doors! 
+   - /bunnydoor unlockall :: Lock ALL the doors!
+   - /bunnydoor help :: List the sub-commands available.
 
 ** Configuration
    
@@ -35,7 +39,7 @@
 
 ** Permissions
 
-   No Code? No Permission.
+   - bunnydoors.admin.alldoors :: Access to lock and unlock ALL the server doors
 
 ** No Wife.  No Horse.  No Mustache.
 
@@ -45,15 +49,19 @@
 	 - Outputs data to the console when a user uses a door 
 	   - Some kind of door identifier 
 	   - location of door (if needed)
+
 	 - Set up a command ~/bunnydoor info~ Outputs to the console the door that the user is looking at 
+
    - v0.2 :: 
      - 3 Basic permission nodes: (With a nod to the Dragon Quest series)  
 	   - ~door.key.thiefkey~
 	   - ~door.key.magickey~
 	   - ~door.key.finalkey~
+
 	 - Storage of door properties inside of a yml file 
      - ~/bunnydoor lock <key>~ locks the door with the given key (i.e. thiefkey, magickey, finalkey)
 	 - Actually prevent users from using a door when they don't have a key, and give them a message.
+
    - v0.3 :: 
 	 - Optimization release 
 	 - Keep a queue of most recently used doors in memory (to avoid costly db lookups?)
@@ -61,6 +69,7 @@
      - Explain to user difference between yaml door persistence (stored in memory) and DB persistence (not in memory, but takes CPU to
        retrieve)
 	 - Don't try an optimize DB side!  Let DB and server-admin do that!
+
    - Future Versions ::
 	 - Custom lock messages!
 	 - Non-indentifiable locks! ("This door is locked" vs "This door is locked, you need the iron key.")

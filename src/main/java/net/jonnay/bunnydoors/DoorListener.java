@@ -3,6 +3,8 @@ package net.jonnay.bunnydoors;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 
+import org.bukkit.event.block.Action;
+
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -11,9 +13,16 @@ import org.bukkit.event.player.PlayerInteractEvent;
 // Block
 
 public class DoorListener implements Listener {
+
+	private BunnyDoors plugin; 
+	
+	public DoorListener(BunnyDoors p) {
+		plugin = p;
+	}
+	
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerInteract(PlayerInteractEvent event) {
-		BunnyDoor.Debug("Player action:"+event.getAction());
+		BunnyDoors.Debug("Player action:"+event.getAction());
 		
 		if (event.getAction() != Action.LEFT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_BLOCK) {
 			return;
@@ -22,20 +31,20 @@ public class DoorListener implements Listener {
 		Block block = event.getClickedBlock();
 		Material material = block.getType();
 
-		BunnyDoor.Debug("Door?"+ (isDoor(block) ? "Yes" : "No"));
-		if (isDoor(block))
+		BunnyDoors.Debug("Door?"+ (isDoor(block) ? "Yes" : "No"));
+		if (!isDoor(block))
 			return;
 		
-		BunnyDoor.Debug("Action: "+event.getAction());
+		BunnyDoors.Debug("Action: "+event.getAction());
 
 		//event might be cancelled?
 		if (event.isCancelled()) {
-			BunnyDoor.Debug("Event was Cancelled");
+			BunnyDoors.Debug("Event was Cancelled");
 			return;
 		}
 
-		BunnyDoor.Debug("Locked?"+ (isLocked(block) ? "Yes" : "no"));
-		if (isLocked(block)) {
+		BunnyDoors.Debug("Locked?"+ (plugin.isLocked(block) ? "Yes" : "no"));
+		if (plugin.isLocked(block)) {
 			event.setCancelled(true);
 			return;
 		}
@@ -47,9 +56,6 @@ public class DoorListener implements Listener {
 				(block.getType() == Material.IRON_DOOR_BLOCK));
 	}
 
-	private boolean isLocked(Block block) {
-		return false;
-	}
 
 	private void actOnDoor(Block mainblock) {
 		/*
