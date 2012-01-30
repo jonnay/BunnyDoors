@@ -74,7 +74,7 @@ cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
 [INFO] Copying 1 resource
 [INFO] 
 [INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ BunnyDoors ---
-[INFO] Compiling 1 source file to /Users/jonathana/projects/BunnyDoors/target/classes
+[INFO] Compiling 2 source files to /Users/jonathana/projects/BunnyDoors/target/classes
 [INFO] 
 [INFO] --- maven-resources-plugin:2.4.3:testResources (default-testResources) @ BunnyDoors ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
@@ -106,9 +106,9 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 4.864s
-[INFO] Finished at: Sun Jan 29 17:44:57 MST 2012
-[INFO] Final Memory: 9M/81M
+[INFO] Total time: 11.345s
+[INFO] Finished at: Sun Jan 29 18:22:56 MST 2012
+[INFO] Final Memory: 10M/81M
 [INFO] ------------------------------------------------------------------------
 target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
 #+end_example
