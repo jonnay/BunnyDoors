@@ -2,21 +2,26 @@
                                 ======
 
 Author: Jonathan Arkell
-Date: 2012-01-29 12:17:56 MST
+Date: 2012-01-30 10:09:14 MST
 
 
 Table of Contents
 =================
 1 Jonnays First Ever Plugin Foray!
     1.1 Yay!
-    1.2 Open source!
-    1.3 It's only the beginning.
-    1.4 Commands
-    1.5 Configuration
-    1.6 Permissions
-    1.7 No Wife.  No Horse.  No Mustache.
-    1.8 Roadmap:
-    1.9 Development
+    1.2 Usage
+        1.2.1 Caveats
+    1.3 Open source!
+    1.4 It's only the beginning.
+    1.5 Installation
+    1.6 Commands
+    1.7 Configuration
+        1.7.1 Serialized Doors File
+    1.8 Permissions
+    1.9 Assumptions
+    1.10 Roadmap:
+    1.11 Changelog
+    1.12 Development
 
 
 1 Jonnays First Ever Plugin Foray!
@@ -28,74 +33,137 @@ Table of Contents
 
    While I am not the worlds greatest Java developer, I have been writing code in some form or another for decades.  So hopefully it won't suck!
 
-   I've been wanting doors-with-permissions for long.  There is a plugin that supposedly allows keys and doors, and... effectively SOUNDS
-   awesome, but the developers are busy and wont release it.  So it is time to write my own!
+   There are plenty of plugins that give you specific custom permissions for doors (well kinda), but this plugin is different.  The point of
+   this plugin is to emulate keys for doors.  So it aims to be easy for you to create doors that require keys. I've been wanting
+   doors-with-permissions for long.  There is a plugin that supposedly allows keys and doors, and SOUNDS awesome, but the developers are
+   busy and wont release it.  So it is time to write my own!
 
-   So here is an open source plugin that adds permissions to specific doors.  So say you wanted to make a standard RPG-esque door that is
-   only open-able by a key, you would set a door with a permission like doors.key.ironkey.  To give a player an iron key, you would grant
-   them the permission doors.key.ironkey.
+   So say you wanted to make a standard RPG-esque door that is only open-able by a key, you would set a door with a permission like
+   doors.key.ironkey.  To give a player an iron key, you would grant them the permission doors.key.ironkey.
 
    With a plugin like citizens, you could grant them that permission after completing a quest!
 
-1.2 Open source!
+1.2 Usage
+=========
+   
+   1. Figure out the name of your keys, and add them to the config file
+   2. Protect an area with the protection plugin of your choice.  (Mine is Worldguard).  Make sure you allow people to use the doors, but
+      don't allow block breaks, or block places. 
+   3. To Lock a door, look at the door (currently top-half only due to a bug) and type /bunnydoors lock <keyname>
+   4. Profit!  Now only users with the bunnydoors.key.<keyname> can open the door.
+
+1.2.1 Caveats
+~~~~~~~~~~~~~
+
+    This plugin DOESN'T protect against power opening the door.  This is great because it allows for one-way locked doors.  But It also
+    means you need to make sure people can't place redstone torches in front of your locked door.
+
+    This plugin DOESN'T protect against block-break events.  Think about it.. if the door is set in an area without block break proteciton,
+    why do you even need it in the first place?
+
+1.3 Open source!
 ================
+
    I am leaning plugin development by looking at other peoples source, and basically standing upon the shoulders of bukkit giants. So NOT
    making this plugin open source would be insane, and kinda lame.
 
    Source code, such as it is:  [https://github.com/jonnay/BunnyDoors]
 
-1.3 It's only the beginning.
+1.4 It's only the beginning.
 ============================
-   No code yet. :(
-
+ 
    Instead of large grand plans, I have a set of very small discreet releases planned.  If anyone wants to help, they are more then welcome
    to fork the repo, and I will pull the changes (assuming they work).  Please feel free down download an contribute.  
 
-1.4 Commands
+1.5 Installation
+================
+
+   Easy, put the plugin in /plugins.  Customize the name of the keys inside of the keys node of plugins/BunnyDoors/config.yml
+
+1.6 Commands
 ============
 
-   No Code? No Commands.
+   /bunnydoor lock <key>: Lock the door with the given key.  If the key is named ironkey, then the permission to open the door is
+        bunnydoors.key.ironkey  
+   /bunnydoor unlock: Unlock the door.
+   /bunnydoor reload: Reload the configuration (and serialized door data)
+   /bunnydoor info: Display information about the door you're looking at
+   /bunnydoor lockall: Lock ALL the doors! 
+   /bunnydoor unlockall: Lock ALL the doors!
+   /bunnydoor help: List the sub-commands available.
 
-1.5 Configuration
+1.7 Configuration
 =================
-   
-   No Code? No Config.
 
-1.6 Permissions
+
+  # BunnyDoors Configuration File
+  # Right now there is just a list of available keys.  Super easy.
+  #
+  # (notice the nod to Dragon Quest!)
+  keys:
+    - thief
+    - magic
+    - final
+
+
+
+1.7.1 Serialized Doors File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    This is the file that is used to store the locked doors.
+
+
+  # DO NOT EDIT THIS FILE BY HAND UNLESS YOU KNOW WHAT YOU ARE DOING
+  # YOU HAVE BEEN WARNED.
+  # x575y66z-479Wworld
+  #   locker: jonnay23
+  #   key: iron
+  #
+
+
+
+
+    Basically each root node is named x<xpos>y<ypos>z<zpos>W<world>
+
+1.8 Permissions
 ===============
 
-   No Code? No Permission.
+   bunnydoors.admin.alldoors: Access to lock and unlock ALL the server doors
+   bunnydoors.admin.reload: access to reload the configuration
+   bunnydoors.lock: access to lock a door
+   bunnydoors.key.*: lets you open all locked doors
+   bunnydoors.key.<keyname>: Lets you open the named door
 
-1.7 No Wife.  No Horse.  No Mustache.
-=====================================
+1.9 Assumptions
+===============
+   There are 2 big assumptions right now:
 
-1.8 Roadmap:
-============
-   v0.1:
-     - Internal release only!
-     - Outputs data to the console when a user uses a door 
-       - Some kind of door identifier 
-       - location of door (if needed)
-     - Set up a command ~/bunnydoor info~ Outputs to the console the door that the user is looking at 
-   v0.2: 
-     - 3 Basic permission nodes: (With a nod to the Dragon Quest series)  
-       - ~door.key.thiefkey~
-       - ~door.key.magickey~
-       - ~door.key.finalkey~
-     - Storage of door properties inside of a yml file 
-     - ~/bunnydoor lock <key>~ locks the door with the given key (i.e. thiefkey, magickey, finalkey)
-     - Actually prevent users from using a door when they don't have a key, and give them a message.
+   1. You don't have lots and lots of doors
+   2. You don't have lots and lots of players opening doors.
+
+   If you want to run this plugin on a server that flies in the face of either assumption, I'd like to hear about it!  Maybe I can optimize
+   the code to not suck. 
+
+   For lots of doors being placed, the optimization scheme is to move the door serialization into a DB and out of memory.
+   For lots of players opening doors, the optimization scheme is to keep a map of doors in memory. 
+
+   
+
+1.10 Roadmap:
+=============
    v0.3: 
-     - Optimization release 
+     - User can add key types with ~/bunnydoor add key~
+     - admins can give keys to users manually 
+     - Make sure any weirdness is dealt witho: redstone, pistons, blockbreaks 
+     - Let players grant specific keys with a bunnydoor.keymaster.<key> permission
      - Keep a queue of most recently used doors in memory (to avoid costly db lookups?)
        - when a door is modified/created it should throw event
      - Explain to user difference between yaml door persistence (stored in memory) and DB persistence (not in memory, but takes CPU to
        retrieve)
-     - Don't try an optimize DB side!  Let DB and server-admin do that!
+
+
    Future Versions:
      - Custom lock messages!
      - Non-indentifiable locks! ("This door is locked" vs "This door is locked, you need the iron key.")
-     - Add custom permission nodes right within the game!
      - Lock chests with keys!
      - Allow opening of iron doors with use if the key is held!
      - ~/bunnydoor list~ to list keys!
@@ -103,8 +171,18 @@ Table of Contents
      - selectable persistence!  Yaml, sqlite or MySQL!
      - herocraft lockpicking skill!
 
-1.9 Development
-===============
+1.11 Changelog
+==============
+   0.1: First version
+   0.2: 
+     - Added Serialization scheme
+     - added config file, with ability to customize keys
+     - added /lock command
+     - added /unlock command
+     - added /reload command
+
+1.12 Development
+================
    The repository is in git.  Go Nuts!  My to-do items and projects are inside of a text-file called Dev.org.  Pick one and go with it!  Or
    do something else!  If you use Emacs, it is even easier to edit that file.  If you do plan on working on something, shoot me a note so we
    don't invent eachohters wheel.  (that sounds dirty).
