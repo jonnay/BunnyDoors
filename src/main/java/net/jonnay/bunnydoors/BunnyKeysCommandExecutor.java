@@ -74,7 +74,7 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 					keys.add(args[1]);
 					
 					plugin.getConfig().set("keys", keys);
-					plugin.getConfig().saveConfig();
+					plugin.saveConfig();
 					return true;
 				}
 
