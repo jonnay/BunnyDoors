@@ -13,7 +13,7 @@ import java.util.List;
 import com.smilingdevil.devilstats.api.DevilStats;
 
 public class BunnyDoors extends JavaPlugin {
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = false;
 	public static final Logger log = Logger.getLogger("Minecraft");
 
 	private boolean allLocked = false;
@@ -40,7 +40,7 @@ public class BunnyDoors extends JavaPlugin {
 
 		myExecutor = new BunnyDoorsCommandExecutor(this);
 		getCommand("bunnydoor").setExecutor(myExecutor);
-		
+		getCommand("bunnykey").setExecutor(new BunnyKeysCommandExecutor(this));
 		getServer().getPluginManager().registerEvents(new DoorListener(this), this);
 
 		this.getConfig().options().copyDefaults(true);
@@ -62,6 +62,10 @@ public class BunnyDoors extends JavaPlugin {
 		System.out.println(this.toString() + " enabled");
 	}
 
+	public boolean playerHasKey(String key, Player p) {
+		return p.hasPermission("bunnydoors.key."+key);
+	}
+	
 	private boolean keyholderHasAllPerms(Player keyholder) {
 		return ((keyholder != null) &&
 				(keyholder.hasPermission("bunnydoors.admin.alldoors")));
@@ -117,8 +121,7 @@ public class BunnyDoors extends JavaPlugin {
 		}
 
 		BunnyDoor d = BunnyDoor.getFromBlock(door);
-		if (d.isLocked(keyholder)) {
-			sendLockedMessage(keyholder, d.getKey() );
+		if (d.isLocked()) {			
 			return true;
 		} else {
 			return false;
@@ -127,7 +130,7 @@ public class BunnyDoors extends JavaPlugin {
 
 	public void sendLockedMessage(Player player, String key) {
 		player.sendMessage("Sorry, That door is locked, you need the "+key+" key to open it.");
-		player.sendMessage("Use /bunnydoor keys to get a list of your keys!");
+		player.sendMessage("Use /bunnykey list to get a list of your keys!");
 	}
 
 	/*

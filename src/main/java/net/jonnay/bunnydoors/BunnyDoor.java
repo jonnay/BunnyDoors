@@ -2,6 +2,7 @@ package net.jonnay.bunnydoors;
 
 import org.bukkit.entity.Player;
 import org.bukkit.Material;
+import org.bukkit.material.Door;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 
@@ -76,11 +77,12 @@ public class BunnyDoor {
 	private String id;
 	private String key;
 	private String locker;
-	
+	private Block block;
 	
 	private BunnyDoor(Block b) {
 		id = createIdFromBlock(b);
 		key = BunnyDoor.plugin.doorSerializer.getDoorKey(id);
+		block = b;
 	}
 
 	private String createIdFromBlock(Block b) {
@@ -99,18 +101,25 @@ public class BunnyDoor {
 		return key;
 	}
 	
-	public boolean isLocked(Player p) {
+	public boolean isLocked() {
 		String key = getKey();
 		if (key == null) {
 			BunnyDoors.Debug("No key for door "+id);
 			return false;
 		}
-		
+		return true;
+	}
+
+	public boolean canPlayerOpen(Player p) {
+		String key = getKey();
+		if (key == null) {
+			return true;
+		}
 		boolean perm = p.hasPermission("bunnydoors.key."+key);
 
 		BunnyDoors.Debug("checking door "+id+" for key:"+key+" bunnydoors.key."+key+" is: "+perm);
 
-		return !perm;  // if the keyholder doesn't have permission, then it IS locked.
+		return perm;  // if the keyholder doesn't have permission, then it IS locked.
 	}
 
 	// if we cache doors, invalidate here
@@ -126,9 +135,19 @@ public class BunnyDoor {
 		return true;
 	}
 
-	private void actOnDoor(Block mainblock) {
+	public void close() {
+		///  Snarfed from http://forums.bukkit.org/threads/opening-a-door.56454/ bergerkiller
+		Door door = (Door) block.getType().getNewData(block.getData());
+		door.setOpen(false);
+
+		Block above = block.getRelative(BlockFace.UP);
+
+		block.setData(door.getData(), true);
+		above.setData(door.getData(), true);
+	}
+			
 		/*
-	   ///  Snarfed from http://forums.bukkit.org/threads/opening-a-door.56454/ bergerkiller
+	   
 	   Block b = mainblock.getRelative(face);
 	   Material type = b.getType();
 	   if (Util.isDoor(type)) {
@@ -151,6 +170,5 @@ public class BunnyDoor {
 	   }
 	   }
 		*/
-	}
 
 }

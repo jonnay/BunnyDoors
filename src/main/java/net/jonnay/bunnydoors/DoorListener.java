@@ -10,11 +10,28 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.entity.Player;
+import org.bukkit.Bukkit;
+
 
 // Block
 
 public class DoorListener implements Listener {
 
+	public static final int DOOR_OPEN_TIME = 20 * 10; // (20 Ticks per second, times 10 seconds)
+
+	private class DoorCloser implements Runnable {
+		BunnyDoor door;
+		
+		public DoorCloser(BunnyDoor d) {
+			door = d;
+		}
+
+		public void run() {
+			door.close();
+		}
+	}
+
+	
 	private BunnyDoors plugin; 
 	
 	public DoorListener(BunnyDoors p) {
@@ -47,13 +64,19 @@ public class DoorListener implements Listener {
 
 		// Not sure about the indirection here.. Refactor later?
 		BunnyDoors.Debug("Locked?"+ (plugin.isLocked(block, player) ? "Yes" : "no"));
-		if (plugin.isLocked(block, player)) {
-			event.setCancelled(true);
-			return;
-		}
-		
-    }
 
+		BunnyDoor d = BunnyDoor.getFromBlock(block);
+		if (d.isLocked()) {
+			if (d.canPlayerOpen(player)) {
+				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new DoorCloser(d), DOOR_OPEN_TIME);
+			} else {
+				plugin.sendLockedMessage(player, d.getKey() );
+				event.setCancelled(true);
+			}
+		}
+
+		return;
+    }	
 }
 
 

@@ -3,11 +3,13 @@ package net.jonnay.bunnydoors;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
+import java.util.List;
 
 public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 
-	protected String mainCommand = "bunnykey";
+	protected String getMainCommand() {
+		return "bunnykey";
+	}
 	
 	final BunnyDoors plugin;
 
@@ -68,8 +70,11 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 						return false;
 					}
 
-					s.sendMessage("Unimplemented");
+					List<String> keys = plugin.getKeys();
+					keys.add(args[1]);
 					
+					plugin.getConfig().set("keys", keys);
+					plugin.getConfig().saveConfig();
 					return true;
 				}
 

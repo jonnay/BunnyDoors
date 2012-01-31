@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.block.Block;
 import java.util.HashMap;
 
-public class BunnyCommandExecutor implements CommandExecutor {
+public abstract class BunnyCommandExecutor implements CommandExecutor {
 
 	protected abstract class SubExecutor {
 		protected String permission = "";
@@ -53,9 +53,7 @@ public class BunnyCommandExecutor implements CommandExecutor {
 	
 	HashMap<String, SubExecutor> subExecutors = new HashMap<String, SubExecutor>();
 	
-	protected String getMainCommand() {
-		return mainCommand;
-	}
+	abstract protected String getMainCommand();
 
 	public void addSubExecutor(String sub, SubExecutor ex) {
 		subExecutors.put(sub, ex);

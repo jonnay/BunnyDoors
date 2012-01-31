@@ -2,7 +2,7 @@
                                 ======
 
 Author: Jonathan Arkell
-Date: 2012-01-30 10:09:14 MST
+Date: 2012-01-30 23:51:34 MST
 
 
 Table of Contents
@@ -126,10 +126,16 @@ Table of Contents
 
 1.8 Permissions
 ===============
-
+   bunnydoors.use: access to use the /bunnydoor command 
    bunnydoors.admin.alldoors: Access to lock and unlock ALL the server doors
    bunnydoors.admin.reload: access to reload the configuration
    bunnydoors.lock: access to lock a door
+
+   bunnydoors.keycmd.use: access to use the /bunnykey command
+   bunnydoors.keycmd.list: list the users curent key
+   bunnydoors.keycmd.listall: list all keys available
+   bunnydoors.keycmd.admin.give: access to give the key  
+
    bunnydoors.key.*: lets you open all locked doors
    bunnydoors.key.<keyname>: Lets you open the named door
 

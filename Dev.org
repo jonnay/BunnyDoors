@@ -10,12 +10,17 @@
 *** FINISHED Set up a command ~/bunnydoor info~ Outputs to the console the door that the user is looking at
 	 CLOSED: [2012-01-29 Sun 19:38]
 
-** PROJECT 0.2 Release
-*** PROJECT Doors have both blocks.  Need to refer to bottom only when testing.														  :NEXT:
+** FINISHED 0.2 Release
+   CLOSED: [2012-01-30 Mon 23:03]
+*** FINISHED Doors have both blocks.  Need to refer to bottom only when testing.
+	 CLOSED: [2012-01-30 Mon 23:03]
 **** TODO Fix the id block problem.  More debug code around it
-*** PROJECT test permissions to lock and unlock doors
-*** PROJECT fix permission to open doxoors
-*** PROJECT If a door is locked, it should say it is locked
+*** FINISHED test permissions to lock and unlock doors
+	 CLOSED: [2012-01-30 Mon 23:03]
+*** FINISHED fix permission to open doxoors
+	 CLOSED: [2012-01-30 Mon 23:03]
+*** FINISHED If a door is locked, it should say it is locked
+	 CLOSED: [2012-01-30 Mon 23:03]
 *** FINISHED Devilstats? sure why not
 	 CLOSED: [2012-01-29 Sun 23:29]
 **** DONE Compile
@@ -44,23 +49,43 @@
 *** FINISHED Reload not working
 	 CLOSED: [2012-01-30 Mon 00:54]
 
-** PROJECT 0.3 Release
-*** PROJECT /bunnydoor addkey <key>
+** FINISHED 0.3 Release
+   CLOSED: [2012-01-31 Tue 00:12]
+*** FINISHED key command
+	 CLOSED: [2012-01-31 Tue 00:03]
+	/key list
+    /key listall 
+    /key give <player> <name>
+*** FINISHED Locked doors automagically close themselves
+	 CLOSED: [2012-01-31 Tue 00:03]
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable()
+        {
+            public void run()
+            {
+                do stuff in here
+            }
+        }, # of ticks delayed here);
+*** FINISHED /bunnykey add <key>
+	 CLOSED: [2012-01-31 Tue 00:00]
+*** FINISHED /bunnykey list <key> the User should be able to list the keys
+	 CLOSED: [2012-01-30 Mon 23:03]
+** PROJECT 0.4 Release
+*** PROJECT /bunnykey give <key> <player>
 
-*** PROJECT the User should be able to list the keys
-*** PROJECT /bunnydoor give <key> <player>
+	net.milkbowl.vault.permission.playerAdd(Player player, String permission)
 
-*** PROJECT do not allow block break 
-*** PROJECT do not allow piston break
-*** PROJECT do not allow redstone
 *** PROJECT Keep a queue of most recently used doors in memory perhaps (to avoid costly lookups?)
 	- all doors in the queue
 	- user-changeable in the config, so large servers can use more memory on queue, small servers less
 *** PROJECT when a door is modified it should throw event
 	- remove changed doors from queue 
 *** PROJECT locked irondoors take on the lock from the block they are on (settable in a config)
+*** PROJECT Single-use keys
+
+*** PROJECT Temporary Keys 
 ** PROJECT 1.0 Fix bugs from previous releases
 ** Future Features
+*** SOMEDAY Keys per world!
 *** SOMEDAY Custom lock messages!
 
 *** SOMEDAY Non-indentifiable locks! ("This door is locked" vs "This door is locked, you need the iron key.")
@@ -78,6 +103,7 @@
 
 *** SOMEDAY send note block effects to play a dragonquest like door opening sound 
 * Test
+** Run
 #+begin_src emacs-lisp 
 (save-excursion
  (let ((fill-column 80))
@@ -136,7 +162,7 @@ cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building Bunny Doors 0.2.0
+[INFO] Building Bunny Doors 0.3.0
 [INFO] ------------------------------------------------------------------------
 [INFO] 
 [INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ BunnyDoors ---
@@ -171,72 +197,22 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO] Building jar: /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar
 [INFO] 
 [INFO] --- maven-install-plugin:2.3.1:install (default-install) @ BunnyDoors ---
-[INFO] Installing /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.2.0/BunnyDoors-0.2.0.jar
-[INFO] Installing /Users/jonathana/projects/BunnyDoors/pom.xml to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.2.0/BunnyDoors-0.2.0.pom
+[INFO] Installing /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.3.0/BunnyDoors-0.3.0.jar
+[INFO] Installing /Users/jonathana/projects/BunnyDoors/pom.xml to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.3.0/BunnyDoors-0.3.0.pom
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 7.463s
-[INFO] Finished at: Mon Jan 30 09:49:10 MST 2012
+[INFO] Total time: 4.533s
+[INFO] Finished at: Mon Jan 30 23:50:58 MST 2012
 [INFO] Final Memory: 9M/81M
 [INFO] ------------------------------------------------------------------------
 target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
 #+end_example
 
 ** Buld results
-#+results:
-#+begin_example
-[INFO] Scanning for projects...
-[INFO]                                                                         
-[INFO] ------------------------------------------------------------------------
-[INFO] Building Bunny Doors 0.2.0
-[INFO] ------------------------------------------------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ BunnyDoors ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] Copying 3 resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ BunnyDoors ---
-[INFO] Compiling 1 source file to /Users/jonathana/projects/BunnyDoors/target/classes
-[INFO] 
-[INFO] --- maven-resources-plugin:2.4.3:testResources (default-testResources) @ BunnyDoors ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /Users/jonathana/projects/BunnyDoors/src/test/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ BunnyDoors ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.7.2:test (default-test) @ BunnyDoors ---
-[INFO] No tests to run.
-[INFO] Surefire report directory: /Users/jonathana/projects/BunnyDoors/target/surefire-reports
-
--------------------------------------------------------
- T E S T S
--------------------------------------------------------
-There are no tests to run.
-
-Results :
-
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
-
-[INFO] 
-[INFO] --- maven-jar-plugin:2.3.1:jar (default-jar) @ BunnyDoors ---
-[INFO] Building jar: /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar
-[INFO] 
-[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ BunnyDoors ---
-[INFO] Installing /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.2.0/BunnyDoors-0.2.0.jar
-[INFO] Installing /Users/jonathana/projects/BunnyDoors/pom.xml to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.2.0/BunnyDoors-0.2.0.pom
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time: 4.446s
-[INFO] Finished at: Mon Jan 30 00:42:03 MST 2012
-[INFO] Final Memory: 9M/81M
-[INFO] ------------------------------------------------------------------------
-target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
-#+end_example
 
 * Giants
-  - Helpers at #bukkitdev
+  - Helpers at #bukkitdev  
+	- esp. ACStache 
   - McMMO devs for providing a decent pom.xml
   - LWC devs

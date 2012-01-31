@@ -1,6 +1,7 @@
 * Jonnays First Ever Plugin Foray!
 ** Yay!
-   This plugin is my first ever (not-modifying-someone-elses) plugin.
+   This plugin is my first ever (not-modifying-someone-elses) plugin.  It allows you to make custom keys, and lock doors so only people who
+   hold the key can get in.
 
    While I am not the worlds greatest Java developer, I have been writing code in some form or another for decades.  So hopefully it won't suck!
 
@@ -21,6 +22,10 @@
       don't allow block breaks, or block places. 
    3. To Lock a door, look at the door (currently top-half only due to a bug) and type /bunnydoors lock <keyname>
    4. Profit!  Now only users with the bunnydoors.key.<keyname> can open the door.
+
+   You will want to give your players the permission bunnydoors.keycmd.list so they can see what keys they currently own
+
+   You can use a plugin like citizens, where the player can complete a quest to get the apropriate key permission.
 
 *** Caveats
 
@@ -57,6 +62,11 @@
    - /bunnydoor unlockall :: Lock ALL the doors!
    - /bunnydoor help :: List the sub-commands available.
 
+   - /bunnykey list :: List the keys that you have
+   - /bunnykey add <key> :: Add they <key> to the global key list
+   - /bunnykey listall :: List all available keys
+   - /bunnykey give <player> <key> :: not implemented 
+
 ** Configuration
 #+begin_src yaml :tangle src/main/resources/config.yml
   # BunnyDoors Configuration File
@@ -81,10 +91,16 @@
 
 	Basically each root node is named x<xpos>y<ypos>z<zpos>W<world>
 ** Permissions
-
+   - bunnydoors.use :: access to use the /bunnydoor command 
    - bunnydoors.admin.alldoors :: Access to lock and unlock ALL the server doors
    - bunnydoors.admin.reload :: access to reload the configuration
    - bunnydoors.lock :: access to lock a door
+
+   - bunnydoors.keycmd.use :: access to use the /bunnykey command
+   - bunnydoors.keycmd.list :: list the users current key
+   - bunnydoors.keycmd.listall :: list all keys available
+   - bunnydoors.keycmd.admin.give :: access to give the key  
+
    - bunnydoors.key.* :: lets you open all locked doors
    - bunnydoors.key.<keyname> :: Lets you open the named door
 
@@ -102,10 +118,8 @@
 
    
 ** Roadmap:
-   - v0.3 :: 
-	 - User can add key types with ~/bunnydoor add key~
+   - v0.4 :: 
      - admins can give keys to users manually 
-	 - Make sure any weirdness is dealt witho: redstone, pistons, blockbreaks 
 	 - Let players grant specific keys with a bunnydoor.keymaster.<key> permission
 	 - Keep a queue of most recently used doors in memory (to avoid costly db lookups?)
 	   - when a door is modified/created it should throw event
@@ -128,9 +142,13 @@
    - 0.2 :: 
 	 - Added Serialization scheme
 	 - added config file, with ability to customize keys
-	 - added /lock command
-	 - added /unlock command
-	 - added /reload command
+	 - added /bunnydoor lock command
+	 - added /bunnydoor unlock command
+	 - added /bunnydoor reload command
+   - 0.3 ::
+	 - added /bunnykey command (with list, listall and add subcommands)
+	 - locked doors close after 10 seconds.
+	 - debugging is turned off (Sorry about the spam)
 
 ** Development
    The repository is in git.  Go Nuts!  My to-do items and projects are inside of a text-file called Dev.org.  Pick one and go with it!  Or

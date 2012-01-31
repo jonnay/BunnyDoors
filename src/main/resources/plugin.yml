@@ -1,9 +1,13 @@
 name: BunnyDoors
 main: net.jonnay.bunnydoors.BunnyDoors
-version: 0.1
+version: 0.3
 author: Jonnay
 commands:
-   bunnydoor:
-      description: use /bunnydoor help for help!
-      permission: bunnydoors.use
-      usage: /bunnydoor <subcommand>
+    bunnydoor:
+        description: use /bunnydoor help for help!
+        permission: bunnydoors.use
+        usage: /bunnydoor <subcommand>
+    bunnykey:
+        description: use /bunnykey help for help!
+        permission: bunnydoors.keycmd.use
+        uage: /bunnykey <subcommand>
