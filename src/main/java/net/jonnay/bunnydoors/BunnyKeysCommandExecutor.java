@@ -19,7 +19,10 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 		
 		
 		addSubExecutor("list", new PlayerSubExecutor() {
-				String permission = "bunnydoors.keycmds.list";
+				protected String needsPerm() {
+					return "bunnydoors.keycmds.list";
+				}
+				
 				public boolean run(CommandSender s, String[] args) {
 					String out = "";
 					Player p = (Player) s;
@@ -43,18 +46,25 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 			});
 
 		addSubExecutor("give", new SubExecutor() {
-				String permission = "bunnydoors.keycmds.admin.give";
+				protected String needsPerm() {
+					return "bunnydoors.keycmds.admin.give";
+				}
+				
 				
 				public boolean run(CommandSender s, String[] args) {
 					if (args.length < 3) {
 						return error(s, "Not enough arguments");
 					}
 
+					BunnyDoors.Debug("Checking key "+args[2]);
+					
 					if (plugin.isValidKey(args[2])) {
 						return error(s, args[2] + " is not a valid key");
 					}
 
-					Player target = Bukkit.getServer().getPlayer(args[1]);
+					BunnyDoors.Debug("Checking If Player "+args[1]+"Exists");
+					
+					Player target = Bukkit.getServer().getPlayerExact(args[1]);
 					if (target == null) {
 						return error(s, "Not a valid Player name");
 					}
@@ -73,7 +83,10 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 			});
 
 		addSubExecutor("add", new SubExecutor() {
-				String permission = "bunnydoors.keycmds.admin.add";
+				protected String needsPerm() {
+					return "bunnydoors.keycmds.admin.add";
+				}
+				
 				
 				public boolean run(CommandSender s, String[] args) {
 					if (args.length < 2) {
@@ -86,6 +99,8 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 					
 					plugin.getConfig().set("keys", keys);
 					plugin.saveConfig();
+
+					s.sendMessage("Added key "+args[1]);
 					return true;
 				}
 
@@ -95,7 +110,10 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 			});
 
 		addSubExecutor("listall", new SubExecutor() {
-				String permission = "bunnydoors.keycmds.listall";
+				protected String needsPerm() {
+					return "bunnydoors.keycmds.listall";
+				}
+				
 
 				public boolean run(CommandSender s, String[] args) {
 					s.sendMessage(plugin.getKeys().toString());

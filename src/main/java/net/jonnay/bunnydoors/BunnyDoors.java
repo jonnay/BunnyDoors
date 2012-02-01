@@ -20,9 +20,11 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import net.milkbowl.vault.permission.Permission;
 
 public class BunnyDoors extends JavaPlugin {
-	public static final boolean DEBUG = false;
+	public static final boolean DEBUG = true;
 	public static final Logger log = Bukkit.getLogger();
-
+	public static BunnyDoor instance;
+	public static final int AUTO_SAVE_TIME = 20 * 60 * 5; // 20 ticks * 60 seconds -> 5 mins 
+	
 	private boolean allLocked = false;
 	private BunnyDoorsCommandExecutor myExecutor;
 
@@ -33,6 +35,17 @@ public class BunnyDoors extends JavaPlugin {
 	public boolean hasExtendedPermissionSupport;
 	public static Permission permissions;
 
+	private class SerializerSaver implements Runnable {
+		DoorSerializer d;
+		
+		public SerializerSaver(DoorSerializer d) {
+			this.d = d;
+		}
+		public void run() {
+			d.save();
+		}
+	}
+	
 	
 	public static void Debug(String message) {
 		if (DEBUG)
@@ -59,6 +72,8 @@ public class BunnyDoors extends JavaPlugin {
 		doorSerializer = new DoorSerializer(this);
 		doorSerializer.reload();
 
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this, new SerializerSaver(doorSerializer), AUTO_SAVE_TIME);
+		
 		BunnyDoor.registerPlugin(this);
 
 		if (this.getConfig().getBoolean("devilstats", true)) {

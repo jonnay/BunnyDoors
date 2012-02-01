@@ -88,6 +88,8 @@ public class BunnyDoor {
 		block = b;
 		if (key == null)
 			nativeDoor = true;
+		else
+			nativeDoor = false;
 	}
 
 	private String createIdFromBlock(Block b) {

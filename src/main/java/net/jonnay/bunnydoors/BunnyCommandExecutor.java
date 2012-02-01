@@ -12,13 +12,13 @@ import java.util.HashMap;
 public abstract class BunnyCommandExecutor implements CommandExecutor {
 
 	protected abstract class SubExecutor {
-		protected String permission = "";
-
 		public abstract boolean run(CommandSender s, String[] args);
 		public abstract void usage(CommandSender s); 
-
+		protected abstract String needsPerm();
+		
 		public boolean permitted(CommandSender s) {
-			return (isConsole(s) || hasPerm(s, permission));
+			BunnyDoors.Debug("checking if has permission:"+needsPerm());
+			return (isConsole(s) || hasPerm(s, needsPerm()));
 		}
 
 		private boolean isConsole(CommandSender s) {
