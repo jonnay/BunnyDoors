@@ -77,17 +77,27 @@
 	 CLOSED: [2012-01-31 Tue 00:00]
 *** FINISHED /bunnykey list <key> the User should be able to list the keys
 	 CLOSED: [2012-01-30 Mon 23:03]
-** PROJECT 0.4 Release
+** FINISHED 0.4 Release
+   CLOSED: [2012-02-01 Wed 01:58]
 *** FINISHED /bunnykey give <key> <player>
 	 CLOSED: [2012-02-01 Wed 01:41]
 	net.milkbowl.vault.permission.playerAdd(Player player, String permission)
 **** TODO Test 
-*** PROJECT Better door info
+*** FINISHED Better door info
+	 CLOSED: [2012-02-01 Wed 01:57]
 **** TODO Fix the player 
 **** TODO query if it is a bunnydoor door
 *** FINISHED Choose whether or not to do devil stats in the config.
 	 CLOSED: [2012-02-01 Wed 01:41]
 **** TODO Test 
+*** FINISHED Fixed bad door close bug, where the top half of the door would turn into the bottom half
+*** FINISHED Fixed horrible permissions issue where /bunnykeys was accessible to everyone.
+** PROJECT 0.5
+*** PROJECT Players grant specific keys with bunnydoor.keymaster.<key> permission
+*** PROJECT Trap Doors
+*** PROJECT Chests
+** PROJECT 0.6
+*** PROJECT Iron Door opening, block-based-keys
 ** PROJECT 0.8 Integration release
 *** PROJECT when a door is modified it should throw event
 	- remove changed doors from queue 

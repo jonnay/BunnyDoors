@@ -67,17 +67,15 @@
    - v0.4 :: 
      - admins can give keys to users manually 
 	 - Let players grant specific keys with a bunnydoor.keymaster.<key> permission
-	 - Keep a queue of most recently used doors in memory (to avoid costly db lookups?)
-	   - when a door is modified/created it should throw event
-     - Explain to user difference between yaml door persistence (stored in memory) and DB persistence (not in memory, but takes CPU to
-       retrieve)
-
+   - v0.5 ::
+	 - Trap Doors
+	 - Chests (if trap doors are easy) -- need to make sure it cancels treasurechest events!
+   - v0.6 ::
+	 - Iron Doors, with block-based keys
 
    - Future Versions ::
 	 - Custom lock messages!
 	 - Non-indentifiable locks! ("This door is locked" vs "This door is locked, you need the iron key.")
-	 - Lock chests with keys!
-	 - Allow opening of iron doors with use if the key is held!
 	 - ~/bunnydoor list~ to list keys!
 	 - optional spoutcraft integration, to show keys in the inventory screen on the side!
 	 - selectable persistence!  Yaml, sqlite or MySQL!
@@ -95,6 +93,13 @@
 	 - added /bunnykey command (with list, listall and add subcommands)
 	 - locked doors close after 10 seconds.
 	 - debugging is turned off (Sorry about the spam)
+   - 0.4 ::
+	 - fixed /bunnykey permissions issue
+	 - implemented /bunnykey give command
+	 - added ability to turn off devilstats in the config. (this should have been in there earlier. Sorry)
+	 - Fixed a door bug where the bottom half of the door gets copied into the top
+	 - Door info now displays more info about doors (i.e. who locked it)  It's prettier too.
+
 
 ** Development
    The repository is in git.  Go Nuts!  My to-do items and projects are inside of a text-file called Dev.org.  Pick one and go with it!  Or
