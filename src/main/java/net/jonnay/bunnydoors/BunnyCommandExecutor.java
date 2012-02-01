@@ -25,11 +25,16 @@ public abstract class BunnyCommandExecutor implements CommandExecutor {
 			return (s instanceof ConsoleCommandSender);
 		}
 
-		private boolean hasPerm(CommandSender s, String perm) {
+		protected boolean hasPerm(CommandSender s, String perm) {
 			Player p = (Player) s;
 			return p.hasPermission(perm);
 		}
-	
+
+		protected boolean error(CommandSender s, String err) {
+			usage(s);
+			s.sendMessage(ChatColor.RED + err);
+			return false;
+		}
 		
 		protected String usageLine(String cmd, String desc) {
 			return (ChatColor.WHITE + "/" + getMainCommand() + " " + cmd + " " +
@@ -38,12 +43,12 @@ public abstract class BunnyCommandExecutor implements CommandExecutor {
 		}
 
 		protected String usageLine(String cmd, String arg, String desc) {
-			return usageLine(cmd + ChatColor.YELLOW + "<" + arg + "> ",
+			return usageLine(cmd + ChatColor.YELLOW + " <" + arg + "> ",
 							 desc);
 		}
 
 		protected String usageLine(String cmd, String arg, String arg1, String desc) {
-			return usageLine(cmd, arg + ChatColor.YELLOW + "<" + arg1 + "> ", desc);
+			return usageLine(cmd, arg + ChatColor.YELLOW + "> <" + arg1 + "", desc);
 		}
 	}
 
@@ -71,7 +76,7 @@ public abstract class BunnyCommandExecutor implements CommandExecutor {
 			usage(sender);
 			return false;
 		}
-
+		
 		String subArg = args[0];
 		SubExecutor ex = subExecutors.get(subArg);
 
@@ -79,21 +84,27 @@ public abstract class BunnyCommandExecutor implements CommandExecutor {
 			BunnyDoors.Debug("Could not find executor "+subArg+" inside of executor list");
 			usage(sender);
 			return false;
-		} else {
-			if ((ex instanceof PlayerSubExecutor) &&
-				(sender instanceof ConsoleCommandSender)) {
-				sender.sendMessage("That command can't be run from the console");
-				return false;
-			}
+		} else if (!ex.permitted(sender)) {
 			
-			return ex.run(sender, args);
-		}
+			BunnyDoors.Debug("No permissions");
+			usage(sender);
+			return false;
+		} else if ((ex instanceof PlayerSubExecutor) &&
+				   (sender instanceof ConsoleCommandSender)) {
+			sender.sendMessage("That command can't be run from the console");
+			return false;
+		} 
+		
+		return ex.run(sender, args);
+		
 	}
 
 	public void usage(CommandSender s) {
 		BunnyDoors.Debug("Usage on BunnyCommandExecutor");
 		for (SubExecutor ex : subExecutors.values()) {
-			ex.usage(s);
+			if (ex.permitted(s)) {
+				ex.usage(s);
+			}
 		}
 	}	
 }

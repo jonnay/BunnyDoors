@@ -3,7 +3,7 @@
 	<artifactId>BunnyDoors</artifactId>
 	<packaging>jar</packaging>
     <groupId>jonnay.bunnydoors</groupId>
-    <version>0.3.0</version>
+    <version>0.4.0</version>
     <name>Bunny Doors</name>
     <url>https://github.com/jonnay/BunnyDoors</url>
     <description></description>
@@ -35,12 +35,12 @@
             <artifactId>bukkit</artifactId>
             <version>1.1-R1</version>
         </dependency>
-		<!--
 		<dependency>
             <groupId>net.milkbowl.vault</groupId>
             <artifactId>Vault</artifactId>
-            <version>1.2.5</version>
+            <version>1.2.7</version>
         </dependency>
+		<!--
 		<dependency>
             <groupId>org.getspout</groupId>
             <artifactId>spoutpluginapi</artifactId>

@@ -1,3 +1,11 @@
+* Making it nicer
+** PROJECT Better logo																											   :PROJECT:
+*** TODO "Bunny Doors" text (in MC font) on the bottom
+** PROJECT fix HTML export of Org
+*** TODO Different Pages per section 
+*** TODO make the markup more Compatible 
+** PROJECT Video 
+* Future Versions
 ** FINISHED 0.1 Release
    CLOSED: [2012-01-29 Sun 19:38]
 *** FINISHED Outputs data to the console when a user uses a door
@@ -71,20 +79,27 @@
 	 CLOSED: [2012-01-30 Mon 23:03]
 ** PROJECT 0.4 Release
 *** PROJECT /bunnykey give <key> <player>
-
 	net.milkbowl.vault.permission.playerAdd(Player player, String permission)
-
+**** TODO Test 
+*** PROJECT Better door info
+**** TODO Fix the player 
+**** TODO query if it is a bunnydoor door
+*** PROJECT Choose whether or not to do devil stats in the config.
+**** TODO Test 
+*** PROJECT when a door is modified it should throw event
+	- remove changed doors from queue 
+*** PROJECT when a locked door is attempted, throw an event 
+** PROJECT 0.9 Optimization release
+*** PROJECT Set up DB persistence 
 *** PROJECT Keep a queue of most recently used doors in memory perhaps (to avoid costly lookups?)
 	- all doors in the queue
 	- user-changeable in the config, so large servers can use more memory on queue, small servers less
-*** PROJECT when a door is modified it should throw event
-	- remove changed doors from queue 
-*** PROJECT locked irondoors take on the lock from the block they are on (settable in a config)
-*** PROJECT Single-use keys
 
-*** PROJECT Temporary Keys 
 ** PROJECT 1.0 Fix bugs from previous releases
 ** Future Features
+*** SOMEDAY  locked irondoors take on the lock from the block they are on (settable in a config)
+*** SOMEDAY Single-use keys
+*** SOMEDAY Temporary Keys
 *** SOMEDAY Keys per world!
 *** SOMEDAY Custom lock messages!
 
@@ -99,7 +114,6 @@
 
    - v0.2 :: 
    - Future Versions ::
-
 
 *** SOMEDAY send note block effects to play a dragonquest like door opening sound 
 * Test
@@ -162,7 +176,7 @@ cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building Bunny Doors 0.3.0
+[INFO] Building Bunny Doors 0.4.0
 [INFO] ------------------------------------------------------------------------
 [INFO] 
 [INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ BunnyDoors ---
@@ -170,7 +184,7 @@ cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
 [INFO] Copying 3 resources
 [INFO] 
 [INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ BunnyDoors ---
-[INFO] Compiling 2 source files to /Users/jonathana/projects/BunnyDoors/target/classes
+[INFO] Compiling 3 source files to /Users/jonathana/projects/BunnyDoors/target/classes
 [INFO] 
 [INFO] --- maven-resources-plugin:2.4.3:testResources (default-testResources) @ BunnyDoors ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
@@ -197,14 +211,14 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO] Building jar: /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar
 [INFO] 
 [INFO] --- maven-install-plugin:2.3.1:install (default-install) @ BunnyDoors ---
-[INFO] Installing /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.3.0/BunnyDoors-0.3.0.jar
-[INFO] Installing /Users/jonathana/projects/BunnyDoors/pom.xml to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.3.0/BunnyDoors-0.3.0.pom
+[INFO] Installing /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.4.0/BunnyDoors-0.4.0.jar
+[INFO] Installing /Users/jonathana/projects/BunnyDoors/pom.xml to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.4.0/BunnyDoors-0.4.0.pom
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 4.533s
-[INFO] Finished at: Mon Jan 30 23:50:58 MST 2012
-[INFO] Final Memory: 9M/81M
+[INFO] Total time: 5.040s
+[INFO] Finished at: Tue Jan 31 23:47:28 MST 2012
+[INFO] Final Memory: 10M/81M
 [INFO] ------------------------------------------------------------------------
 target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
 #+end_example

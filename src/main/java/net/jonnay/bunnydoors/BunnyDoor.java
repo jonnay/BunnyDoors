@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.material.Door;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.Effect;
 
 public class BunnyDoor {
 	// can be updated to include chests, and trapdoors. 
@@ -78,11 +79,15 @@ public class BunnyDoor {
 	private String key;
 	private String locker;
 	private Block block;
+	private boolean nativeDoor;
 	
 	private BunnyDoor(Block b) {
 		id = createIdFromBlock(b);
 		key = BunnyDoor.plugin.doorSerializer.getDoorKey(id);
+		locker = BunnyDoor.plugin.doorSerializer.getDoorLocker(id);		
 		block = b;
+		if (key == null)
+			nativeDoor = true;
 	}
 
 	private String createIdFromBlock(Block b) {
@@ -99,6 +104,14 @@ public class BunnyDoor {
    
 	public String getKey() {
 		return key;
+	}
+
+	public String getLocker() {
+		return locker;
+	}
+
+	public boolean isNative() {
+		return nativeDoor;
 	}
 	
 	public boolean isLocked() {
@@ -126,6 +139,9 @@ public class BunnyDoor {
 	public boolean lock(Player p, String key) {
 		String locker = p.getName();
 		BunnyDoor.plugin.doorSerializer.setDoorToKey(id, locker, key);
+		nativeDoor = false;
+		this.locker = locker;
+		this.key = key;
 		return true;
 	}
 
@@ -135,40 +151,26 @@ public class BunnyDoor {
 		return true;
 	}
 
-	public void close() {
+	private boolean setDoorState(boolean state) {
 		///  Snarfed from http://forums.bukkit.org/threads/opening-a-door.56454/ bergerkiller
 		Door door = (Door) block.getType().getNewData(block.getData());
-		door.setOpen(false);
+		door.setOpen(state);
 
 		Block above = block.getRelative(BlockFace.UP);
 
 		block.setData(door.getData(), true);
 		above.setData(door.getData(), true);
+		
+		block.getWorld().playEffect(block.getLocation(), Effect.DOOR_TOGGLE, 0);
+		return true;
 	}
-			
-		/*
-	   
-	   Block b = mainblock.getRelative(face);
-	   Material type = b.getType();
-	   if (Util.isDoor(type)) {
-	   Door door = (Door) type.getNewData(b.getData());
-	   if (toggled != door.isOpen()) {
-	   door.setOpen(toggled);
-	   Block above = b.getRelative(BlockFace.UP);
-	   Block below = b.getRelative(BlockFace.DOWN);
-	   if (Util.isDoor(above.getType())) {
-	   b.setData(door.getData(), true);
-	   door.setTopHalf(true);
-	   above.setData(door.getData(), true);
-	   } else if (Util.isDoor(below.getType())) {
-	   door.setTopHalf(false);
-	   below.setData(door.getData(), true);
-	   door.setTopHalf(true);
-	   b.setData(door.getData(), true);
-	   }
-	   b.getWorld().playEffect(b.getLocation(), Effect.DOOR_TOGGLE, 0);
-	   }
-	   }
-		*/
-
+	
+	public void open() {
+		setDoorState(true);
+	}
+	
+	public void close() {
+		setDoorState(false);
+		
+	}
 }

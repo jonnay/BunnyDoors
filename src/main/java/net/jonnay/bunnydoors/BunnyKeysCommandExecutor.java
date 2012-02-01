@@ -1,5 +1,6 @@
 package net.jonnay.bunnydoors;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -46,13 +47,23 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 				
 				public boolean run(CommandSender s, String[] args) {
 					if (args.length < 3) {
-						usage(s);
-						return false;
+						return error(s, "Not enough arguments");
 					}
 
 					if (plugin.isValidKey(args[2])) {
-						s.sendMessage("not a valid key.");
+						return error(s, args[2] + " is not a valid key");
 					}
+
+					Player target = Bukkit.getServer().getPlayer(args[1]);
+					if (target == null) {
+						return error(s, "Not a valid Player name");
+					}
+
+					if (plugin.hasExtendedPermissionSupport) {
+						plugin.permissions.playerAdd(target, BunnyDoors.keyToPermission(args[2]));
+						s.sendMessage("Added "+args[2]+" to "+args[1]);
+					}
+					
 					return true;
 				}
 				
