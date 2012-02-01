@@ -155,13 +155,16 @@ public class BunnyDoor {
 
 	private boolean setDoorState(boolean state) {
 		///  Snarfed from http://forums.bukkit.org/threads/opening-a-door.56454/ bergerkiller
-		Door door = (Door) block.getType().getNewData(block.getData());
-		door.setOpen(state);
-
 		Block above = block.getRelative(BlockFace.UP);
 
+		Door door = (Door) block.getType().getNewData(block.getData());
+		Door doorabove = (Door) above.getType().getNewData(above.getData());
+
+		door.setOpen(state);
+		doorabove.setOpen(state);
+
 		block.setData(door.getData(), true);
-		above.setData(door.getData(), true);
+		above.setData(doorabove.getData(), true);
 		
 		block.getWorld().playEffect(block.getLocation(), Effect.DOOR_TOGGLE, 0);
 		return true;

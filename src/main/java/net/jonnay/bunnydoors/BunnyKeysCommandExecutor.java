@@ -20,7 +20,7 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 		
 		addSubExecutor("list", new PlayerSubExecutor() {
 				protected String needsPerm() {
-					return "bunnydoors.keycmds.list";
+					return "bunnydoors.keycmd.list";
 				}
 				
 				public boolean run(CommandSender s, String[] args) {
@@ -47,7 +47,7 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 
 		addSubExecutor("give", new SubExecutor() {
 				protected String needsPerm() {
-					return "bunnydoors.keycmds.admin.give";
+					return "bunnydoors.keycmd.admin.give";
 				}
 				
 				
@@ -58,7 +58,7 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 
 					BunnyDoors.Debug("Checking key "+args[2]);
 					
-					if (plugin.isValidKey(args[2])) {
+					if (!plugin.isValidKey(args[2])) {
 						return error(s, args[2] + " is not a valid key");
 					}
 
@@ -84,7 +84,7 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 
 		addSubExecutor("add", new SubExecutor() {
 				protected String needsPerm() {
-					return "bunnydoors.keycmds.admin.add";
+					return "bunnydoors.keycmd.admin.add";
 				}
 				
 				

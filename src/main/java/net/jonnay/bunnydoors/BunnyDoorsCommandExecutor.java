@@ -154,7 +154,7 @@ public class BunnyDoorsCommandExecutor implements CommandExecutor {
 		sender.sendMessage(msg);
 		
 		BunnyDoor d = BunnyDoor.getFromBlock(b);
-		if (!d.isNative()) {
+		if (d.isNative()) {
 			sender.sendMessage(ChatColor.WHITE + "Not A Bunny Door");
 		} else {
 			sender.sendMessage(ChatColor.LIGHT_PURPLE + "Bunny Door");

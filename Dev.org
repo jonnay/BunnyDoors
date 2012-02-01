@@ -78,17 +78,21 @@
 *** FINISHED /bunnykey list <key> the User should be able to list the keys
 	 CLOSED: [2012-01-30 Mon 23:03]
 ** PROJECT 0.4 Release
-*** PROJECT /bunnykey give <key> <player>
+*** FINISHED /bunnykey give <key> <player>
+	 CLOSED: [2012-02-01 Wed 01:41]
 	net.milkbowl.vault.permission.playerAdd(Player player, String permission)
 **** TODO Test 
 *** PROJECT Better door info
 **** TODO Fix the player 
 **** TODO query if it is a bunnydoor door
-*** PROJECT Choose whether or not to do devil stats in the config.
+*** FINISHED Choose whether or not to do devil stats in the config.
+	 CLOSED: [2012-02-01 Wed 01:41]
 **** TODO Test 
+** PROJECT 0.8 Integration release
 *** PROJECT when a door is modified it should throw event
 	- remove changed doors from queue 
 *** PROJECT when a locked door is attempted, throw an event 
+
 ** PROJECT 0.9 Optimization release
 *** PROJECT Set up DB persistence 
 *** PROJECT Keep a queue of most recently used doors in memory perhaps (to avoid costly lookups?)
@@ -184,7 +188,7 @@ cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
 [INFO] Copying 3 resources
 [INFO] 
 [INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ BunnyDoors ---
-[INFO] Compiling 4 source files to /Users/jonathana/projects/BunnyDoors/target/classes
+[INFO] Compiling 5 source files to /Users/jonathana/projects/BunnyDoors/target/classes
 [INFO] 
 [INFO] --- maven-resources-plugin:2.4.3:testResources (default-testResources) @ BunnyDoors ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
@@ -216,8 +220,8 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 4.589s
-[INFO] Finished at: Wed Feb 01 00:34:10 MST 2012
+[INFO] Total time: 5.463s
+[INFO] Finished at: Wed Feb 01 01:44:04 MST 2012
 [INFO] Final Memory: 10M/81M
 [INFO] ------------------------------------------------------------------------
 target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
