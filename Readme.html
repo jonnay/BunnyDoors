@@ -1,567 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 lang="en" xml:lang="en">
 <head>
 <title>Readme</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2012-02-01 02:09:50 MST"/>
+<meta name="generated" content="2012-02-01 23:17:03 MST"/>
 <meta name="author" content="Jonathan Arkell"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
-@charset "UTF-8";
 
-/*************/
-/* XHTML 1.1 */
-/*************/
-
-/* document structure */
-html {
-	display: block;
-	font-family: sans-serif;
-	margin: 0;
-	padding: 0;
-}
-
-/* document head */
-head {
-	display: none;
-}
-/* this hides the following additional elements:
-   title, base, meta, link, style, script, noscript
-
-/* document body */
-body {
-	display: block;
-	background-color: #ddd;
-}
-
-div {
-	display: block;
-}
-
-/* paragraphs */
-p {
-	max-width: 44em;
-	margin: 0;
-	padding: 0;
-}
-
-/* headings */
-h1, h2, h3, h4, h5, h6 {
-	font-size: 100%;
-	font-style: normal;
-	font-weight: normal;
-	margin: 1em 1.5em;
-	padding: 0;
-	text-align: left;
-}
-
-h1 {
-	font-size: 200%;
-	font-style: italic;
-	font-weight: lighter;
-	margin-top: 0;
-	margin-bottom: 0.5em;
-	text-align: center;
-}
-
-h2 {
-	text-transform: uppercase;
-}
-
-h3 {
-	font-variant: small-caps;
-}
-
-h4 {
-	font-variant: small-caps;
-}
-
-h5 {
-	font-style: italic;
-}
-
-h6 {
-	font-style: italic;
-	float: left;
-	margin: 0;
-	padding: 0;
-	margin-right: 1ex;
-}
-
-/* lists */
-ul, ol, dl {
-	max-width: 33em;
-}
-
-ul {
-	list-style-position: outside;
-	list-style-type: circle;
-	padding-left: 0;
-	margin-left: 0;
-}
-
-ol {
-	list-style-position: outside;
-	list-style-type: decimal;
-	padding-left: 0;
-}
-
-ul ul,
-	ol ol
-{
-	margin-left: 1.5em;
-}
-
-li {
-	display: list-item;
-}
-
-dl {
-	display: block;
-}
-
-dt {
-	display: run-in;
-	font-weight: bold;
-	margin-right: 1ex;
-}
-
-dd {
-	display: block;
-	margin-left: 3em;
-}
-
-dd + dd {
-	text-indent: -1.5em;
-}
-
-/* address */
-address {
-	display: block;
-	font-style: italic;
-	text-align: center;
-}
-
-/* horizontal rule */
-hr {
-}
-
-/* preformatted text */
-pre {
-	background-color: #cccccc;
-	color: #333333;
-	border: thin solid black;
-	display: block;
-	font-family: monospace;
-	margin: 0.5em 0;
-	padding: 1em 1.5em;
-    overflow: scroll;
-}
-
-blockquote + pre {
-	margin-bottom: -0.5em;
-	margin-top: -0.5em;
-}
-
-/* block-like quotes */
-blockquote {
-	display: block;
-	margin: 1em 0;
-	padding-left: 1.5em;
-	max-width: 31.5em;
-}
-
-dd blockquote,
-	li blockquote {
-		margin-top: 0.5em;
-		margin-bottom: 0.5em;
-	}
-
-/* inserted/deleted text */
-ins {
-	/* remove if we just want to see the most recent version */
-	color: #006600;
-	text-decoration: underline;
-}
-
-del {
-	/* if we just want to see the most recent version */
-	/* display: none; */
-	color: #660000;
-	text-decoration: line-through;
-}
-
-/* the anchor element */
-a {
-	display: inline;
-}
-
-a:link,
-	a:visited,
-		a:active {
-			font-weight: bold;
-			text-decoration: none;
-		}
-
-/* inline elements */
-span {
-	display: inline;
-}
-
-bdo {
-	display: inline;
-}
-
-br {
-}
-
-em {
-	display: inline;
-	font-style: italic;
-}
-
-em em,
-	h1 em {
-		font-style: normal;
-	}
-
-strong {
-	display: inline;
-	font-weight: bold;
-}
-
-strong strong {
-	font-weight: normal;
-}
-
-dfn {
-	display: inline;
-}
-
-code {
-	display: inline;
-	font-family: monospace;
-	font-variant: normal;
-	text-transform: none;
-}
-
-samp {
-	display: inline;
-	font-family: monospace;
-	font-variant: normal;
-	text-transform: none;
-}
-
-kbd {
-	display: inline;
-	font-family: monospace;
-	font-variant: normal;
-	text-transform: none;
-}
-
-var {
-	display: inline;
-	font-style: italic;
-}
-
-cite {
-	display: inline;
-}
-
-abbr {
-	display: inline;
-	font-style: inherit;
-}
-
-acronym {
-	display: inline;
-	font-style: inherit;
-	font-variant: small-caps;
-	text-transform: lowercase;
-}
-
-q {
-	display: inline;
-}
-
-q:before {
-	content: open-quote;
-}
-
-q:after {
-	content: close-quote;
-}
-
-sub {
-	display: inline;
-	font-size: 50%;
-	font-weight: bolder;
-	vertical-align: sub;
-}
-
-sup {
-	display: inline;
-	font-size: 50%;
-	font-weight: bolder;
-	vertical-align: super;
-}
-
-tt {
-	display: inline;
-	font-family: monospace;
-	font-variant: normal;
-	text-transform: none;
-}
-
-i {
-	display: inline;
-	font-style: italic;
-}
-
-b {
-	display: inline;
-	font-weight: bold;
-}
-
-big {
-	display: inline;
-	font-size: 120%;
-	font-weight: normal;
-}
-
-small {
-	display: inline;
-	font-size: 80%;
-}
-
-/* object */
-object {
-	border: none;
-}
-
-param {
-}
-
-/* images */
-img {
-}
-
-/* client-side image maps */
-map {
-}
-
-area {
-}
-
-/* forms */
-form {
-	margin: 0;
-	padding: 0;
-}
-
-label {
-}
-
-input {
-}
-
-select {
-}
-
-optgroup {
-}
-
-option {
-}
-
-textarea {
-}
-
-fieldset {
-}
-
-legend {
-}
-
-button {
-}
-
-/* tables */
-table {
-	margin: 1em auto;
-}
-
-caption {
-	font-size: 80%;
-	margin: auto;
-}
-
-thead {
-}
-
-tfoot {
-}
-
-tbody {
-}
-
-colgroup { /* also hides col */
-	display: none;
-}
-
-tr {
-}
-
-th {
-	background-color: #cccccc;
-	color: #333333;
-	font-weight: normal;
-	padding: 0 1ex;
-	text-align: center;
-}
-
-td {
-}
-
-/* ruby */
-ruby {
-	display: inline;
-}
-
-rbc {
-}
-
-rtc {
-}
-
-rb {
-	display: inline;
-}
-
-rt {
-	color: #0000cc;
-	display: inline;
-	font-size: 55%;
-}
-
-rp {
-	display: none;
-}
-
-/**************************/
-/* XHTML 1.0 Transitional */
-/**************************/
-
-/* frames */
-iframe {
-}
-
-noframes {
-}
-
-/* lists */
-menu {
-}
-
-dir {
-}
-
-/* text alignment */
-center {
-	display: block;
-	text-align: center;
-}
-
-/* inline elements */
-u {
-	display: inline;
-	text-decoration: underline;
-}
-
-s {
-	display: inline;
-	text-decoration: line-through;
-}
-
-strike {
-	display: inline;
-	text-decoration: line-through;
-}
-
-basefont {
-	display: none;
-}
-
-font {
-	display: inline;
-}
-
-/* Java applet */
-applet {
-}
-
-/* forms */
-isindex {
-}
-
-/**********************/
-/* XHTML 1.0 Frameset */
-/**********************/
-
-/* frames */
-frameset {
-}
-
-frame {
-}
-
-/************/
-/* HTML 3.2 */
-/************/
-
-/* preformatted text */
-xmp {
-	display: block;
-	font-family: monospace;
-}
-
-plaintext {
-	display: block;
-	font-family: monospace;
-}
-
-
-/* Org */
-div#content {
-	margin: 1em 3em;
-	border: 2px solid #888;
-	padding: 1em 2em;
-	background-color: #fff;
-	}
-
-div#table-of-contents {
-	margin: 2em;
-	border: 1px solid #ccc;
-	padding: 0 2em;
-	background-color: #eee;
-}
-
-div#table-of-contents h2 {
-	margin: 0;
-	padding: 1em;
-	border-bottom: 1px solid #888;
-}
-
-.outline-2, .outline-3, .outline-4, .outline-5 {
-	margin-left: 2em;
-}
-
-</style>
+<!-- no styles on this readme-->
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
@@ -600,22 +51,9 @@ div#table-of-contents h2 {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Bunny Doors </a>
-<ul>
-<li><a href="#sec-1-1">1.1 Usage</a>
-<ul>
-<li><a href="#sec-1-1-1">1.1.1 Caveats</a></li>
-</ul>
-</li>
-<li><a href="#sec-1-2">1.2 Open source!</a></li>
-<li><a href="#sec-1-3">1.3 It's only the beginning.</a></li>
-<li><a href="#sec-1-4">1.4 Installation</a></li>
-<li><a href="#sec-1-5">1.5 Assumptions</a></li>
-<li><a href="#sec-1-6">1.6 Roadmap:</a></li>
-<li><a href="#sec-1-7">1.7 Changelog</a></li>
-<li><a href="#sec-1-8">1.8 Development</a></li>
-</ul>
-</li>
+<li><a href="#sec-1">1 Bunny Doors </a></li>
+<li><a href="#sec-2">2 Open source!</a></li>
+<li><a href="#sec-3">3 Changelog</a></li>
 </ul>
 </div>
 </div>
@@ -624,76 +62,32 @@ div#table-of-contents h2 {
 <h2 id="sec-1"><span class="section-number-2">1</span> Bunny Doors </h2>
 <div class="outline-text-2" id="text-1">
 
-<p>   This plugin is my first ever (not-modifying-someone-elses) plugin.  It allows you to make custom keys, and lock doors so only people who
-   hold the key can get in.
-</p>
-<p>
-   There are plenty of plugins that give you specific custom permissions for doors (well kinda), but this plugin is different.  The point of
-   this plugin is to emulate keys for doors.  So it aims to be easy for you to create doors that require keys. I've been wanting
-   doors-with-permissions for long.  There is a plugin that supposedly allows keys and doors, and SOUNDS awesome, but the developers are
-   busy and wont release it.  So it is time to write my own!
-</p>
-<p>
-   So say you wanted to make a standard RPG-esque door that is only open-able by a key, you would set a door with a permission like
-   doors.key.ironkey.  To give a player an iron key, you would grant them the permission doors.key.ironkey.
-</p>
-<p>
-   With a plugin like citizens, you could grant them that permission after completing a quest!
-</p>
-<p>
-   While I am not the worlds greatest Java developer, I have been writing code in some form or another for decades.  So hopefully it won't suck!
-</p>
 
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Usage</h3>
-<div class="outline-text-3" id="text-1-1">
-
-
-<ol>
-<li>Figure out the name of your keys, and add them to the config file
+<p>
+  This plugin lets you lock specific doors on your server, with a particular key.  Only users with that key can open the door.  
+</p>
+<ul>
+<li><b>Quick Start</b> : <a href="https://github.com/jonnay/BunnyDoors/wiki/Quickstart">https://github.com/jonnay/BunnyDoors/wiki/Quickstart</a>
 </li>
-<li>Protect an area with the protection plugin of your choice.  (Mine is Worldguard).  Make sure you allow people to use the doors, but
-      don't allow block breaks, or block places. 
+<li><b>Documentation</b> : <a href="https://github.com/jonnay/BunnyDoors/wiki/">https://github.com/jonnay/BunnyDoors/wiki/</a>
 </li>
-<li>To Lock a door, look at the door (currently top-half only due to a bug) and type /bunnydoors lock &lt;keyname&gt;
+<li><b>Source Code</b> : <a href="https://github.com/jonnay/BunnyDoors/">https://github.com/jonnay/BunnyDoors/</a>
 </li>
-<li>Profit!  Now only users with the bunnydoors.key.&lt;keyname&gt; can open the door.
-</li>
-</ol>
+</ul>
 
 
 <p>
-   You will want to give your players the permission bunnydoors.keycmd.list so they can see what keys they currently own
+  There are plenty of plugins that give you specific custom permissions for doors but this plugin is different.  The point of this plugin is
+  to emulate old-school JRPG doors (Think Dragon Quest).  It aims to be easy for you to create doors that require keys.  I've been wanting
+  doors-with-permissions for a long time now, and decided to roll my own.
 </p>
-<p>
-   You can use a plugin like citizens, where the player can complete a quest to get the apropriate key permission.
-</p>
-
-</div>
-
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Caveats</h4>
-<div class="outline-text-4" id="text-1-1-1">
-
-
-<p>
-    This plugin DOESN'T protect against power opening the door.  This is great because it allows for one-way locked doors.  But It also
-    means you need to make sure people can't place redstone torches in front of your locked door.
-</p>
-<p>
-    This plugin DOESN'T protect against block-break events.  Think about it.. if the door is set in an area without block break proteciton,
-    why do you even need it in the first place?
-</p>
-</div>
 </div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Open source!</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Open source!</h2>
+<div class="outline-text-2" id="text-2">
 
 
 <p>
@@ -701,18 +95,9 @@ div#table-of-contents h2 {
    making this plugin open source would be insane, and kinda lame.
 </p>
 <p>
-   Source code, such as it is:  <a href="https://github.com/jonnay/BunnyDoors">https://github.com/jonnay/BunnyDoors</a>
+   Source code:  <a href="https://github.com/jonnay/BunnyDoors">https://github.com/jonnay/BunnyDoors</a>
 </p>
-</div>
-
-</div>
-
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> It's only the beginning.</h3>
-<div class="outline-text-3" id="text-1-3">
-
-
-<p> 
+<p>
    Instead of large grand plans, I have a set of very small discreet releases planned.  If anyone wants to help, they are more then welcome
    to fork the repo, and I will pull the changes (assuming they work).  Please feel free down download an contribute.  
 </p>
@@ -720,103 +105,9 @@ div#table-of-contents h2 {
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Installation</h3>
-<div class="outline-text-3" id="text-1-4">
-
-
-<p>
-   Easy, put the plugin in /plugins.  Customize the name of the keys inside of the keys node of plugins/BunnyDoors/config.yml
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Assumptions</h3>
-<div class="outline-text-3" id="text-1-5">
-
-<p>   There are 2 big assumptions right now:
-</p>
-<ol>
-<li>You don't have lots and lots of doors
-</li>
-<li>You don't have lots and lots of players opening doors.
-</li>
-</ol>
-
-
-<p>
-   If you want to run this plugin on a server that flies in the face of either assumption, I'd like to hear about it!  Maybe I can optimize
-   the code to not suck. 
-</p>
-<p>
-   For lots of doors being placed, the optimization scheme is to move the door serialization into a DB and out of memory.
-   For lots of players opening doors, the optimization scheme is to keep a map of doors in memory. 
-</p>
-
-</div>
-
-</div>
-
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Roadmap:</h3>
-<div class="outline-text-3" id="text-1-6">
-
-<dl>
-<dt>v0.4</dt><dd>
-<ul>
-<li>admins can give keys to users manually 
-</li>
-<li>Let players grant specific keys with a bunnydoor.keymaster.&lt;key&gt; permission
-</li>
-</ul>
-
-</dd>
-<dt>v0.5</dt><dd>
-<ul>
-<li>Trap Doors
-</li>
-<li>Chests (if trap doors are easy) &ndash; need to make sure it cancels treasurechest events!
-</li>
-</ul>
-
-</dd>
-<dt>v0.6</dt><dd>
-<ul>
-<li>Iron Doors, with block-based keys
-
-</li>
-</ul>
-
-</dd>
-<dt>Future Versions</dt><dd>
-<ul>
-<li>Custom lock messages!
-</li>
-<li>Non-indentifiable locks! ("This door is locked" vs "This door is locked, you need the iron key.")
-</li>
-<li><code>/bunnydoor list</code> to list keys!
-</li>
-<li>optional spoutcraft integration, to show keys in the inventory screen on the side!
-</li>
-<li>selectable persistence!  Yaml, sqlite or MySQL!
-</li>
-<li>herocraft lockpicking skill!
-</li>
-</ul>
-
-</dd>
-</dl>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Changelog</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Changelog</h2>
+<div class="outline-text-2" id="text-3">
 
 <dl>
 <dt>0.1</dt><dd>First version
@@ -867,24 +158,11 @@ div#table-of-contents h2 {
 
 
 </div>
-
-</div>
-
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Development</h3>
-<div class="outline-text-3" id="text-1-8">
-
-<p>   The repository is in git.  Go Nuts!  My to-do items and projects are inside of a text-file called Dev.org.  Pick one and go with it!  Or
-   do something else!  If you use Emacs, it is even easier to edit that file.  If you do plan on working on something, shoot me a note so we
-   don't invent eachohters wheel.  (that sounds dirty).
-</p>
-</div>
-</div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2012-02-01 02:09:50 MST</p>
+<p class="date">Date: 2012-02-01 23:17:03 MST</p>
 <p class="author">Author: Jonathan Arkell</p>
 <p class="creator">Org version 7.7 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

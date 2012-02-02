@@ -1,108 +1,48 @@
+#+OPTIONS toc:0 
+#+STYLE: <!-- no styles on this readme-->
 * Bunny Doors 
-   This plugin is my first ever (not-modifying-someone-elses) plugin.  It allows you to make custom keys, and lock doors so only people who
-   hold the key can get in.
 
-   There are plenty of plugins that give you specific custom permissions for doors (well kinda), but this plugin is different.  The point of
-   this plugin is to emulate keys for doors.  So it aims to be easy for you to create doors that require keys. I've been wanting
-   doors-with-permissions for long.  There is a plugin that supposedly allows keys and doors, and SOUNDS awesome, but the developers are
-   busy and wont release it.  So it is time to write my own!
+  This plugin lets you lock specific doors on your server, with a particular key.  Only users with that key can open the door.  
 
-   So say you wanted to make a standard RPG-esque door that is only open-able by a key, you would set a door with a permission like
-   doors.key.ironkey.  To give a player an iron key, you would grant them the permission doors.key.ironkey.
+  - *Quick Start* : https://github.com/jonnay/BunnyDoors/wiki/Quickstart
+  - *Documentation* : https://github.com/jonnay/BunnyDoors/wiki/
+  - *Source Code* : https://github.com/jonnay/BunnyDoors/
 
-   With a plugin like citizens, you could grant them that permission after completing a quest!
-
-   While I am not the worlds greatest Java developer, I have been writing code in some form or another for decades.  So hopefully it won't suck!
-
-** Usage
-   
-   1. Figure out the name of your keys, and add them to the config file
-   2. Protect an area with the protection plugin of your choice.  (Mine is Worldguard).  Make sure you allow people to use the doors, but
-      don't allow block breaks, or block places. 
-   3. To Lock a door, look at the door (currently top-half only due to a bug) and type /bunnydoors lock <keyname>
-   4. Profit!  Now only users with the bunnydoors.key.<keyname> can open the door.
-
-   You will want to give your players the permission bunnydoors.keycmd.list so they can see what keys they currently own
-
-   You can use a plugin like citizens, where the player can complete a quest to get the apropriate key permission.
-
-*** Caveats
-
-	This plugin DOESN'T protect against power opening the door.  This is great because it allows for one-way locked doors.  But It also
-	means you need to make sure people can't place redstone torches in front of your locked door.
-
-	This plugin DOESN'T protect against block-break events.  Think about it.. if the door is set in an area without block break proteciton,
-	why do you even need it in the first place?
-
-** Open source!
+  There are plenty of plugins that give you specific custom permissions for doors but this plugin is different.  The point of this plugin is
+  to emulate old-school JRPG doors (Think Dragon Quest).  It aims to be easy for you to create doors that require keys.  I've been wanting
+  doors-with-permissions for a long time now, and decided to roll my own.
+  
+* Open source!
 
    I am leaning plugin development by looking at other peoples source, and basically standing upon the shoulders of bukkit giants. So NOT
    making this plugin open source would be insane, and kinda lame.
 
-   Source code, such as it is:  https://github.com/jonnay/BunnyDoors
+   Source code:  https://github.com/jonnay/BunnyDoors
 
-** It's only the beginning.
- 
    Instead of large grand plans, I have a set of very small discreet releases planned.  If anyone wants to help, they are more then welcome
    to fork the repo, and I will pull the changes (assuming they work).  Please feel free down download an contribute.  
-
-** Installation
-
-   Easy, put the plugin in /plugins.  Customize the name of the keys inside of the keys node of plugins/BunnyDoors/config.yml
-
-** Assumptions
-   There are 2 big assumptions right now:
-
-   1. You don't have lots and lots of doors
-   2. You don't have lots and lots of players opening doors.
-
-   If you want to run this plugin on a server that flies in the face of either assumption, I'd like to hear about it!  Maybe I can optimize
-   the code to not suck. 
-
-   For lots of doors being placed, the optimization scheme is to move the door serialization into a DB and out of memory.
-   For lots of players opening doors, the optimization scheme is to keep a map of doors in memory. 
-
    
-** Roadmap:
-   - v0.4 :: 
-     - admins can give keys to users manually 
-	 - Let players grant specific keys with a bunnydoor.keymaster.<key> permission
-   - v0.5 ::
-	 - Trap Doors
-	 - Chests (if trap doors are easy) -- need to make sure it cancels treasurechest events!
-   - v0.6 ::
-	 - Iron Doors, with block-based keys
-
-   - Future Versions ::
-	 - Custom lock messages!
-	 - Non-indentifiable locks! ("This door is locked" vs "This door is locked, you need the iron key.")
-	 - ~/bunnydoor list~ to list keys!
-	 - optional spoutcraft integration, to show keys in the inventory screen on the side!
-	 - selectable persistence!  Yaml, sqlite or MySQL!
-	 - herocraft lockpicking skill!
-
-** Changelog
+* Changelog
    - 0.1 :: First version
    - 0.2 :: 
-	 - Added Serialization scheme
-	 - added config file, with ability to customize keys
-	 - added /bunnydoor lock command
-	 - added /bunnydoor unlock command
-	 - added /bunnydoor reload command
+     - Added Serialization scheme
+     - added config file, with ability to customize keys
+     - added /bunnydoor lock command
+     - added /bunnydoor unlock command
+     - added /bunnydoor reload command
    - 0.3 ::
-	 - added /bunnykey command (with list, listall and add subcommands)
-	 - locked doors close after 10 seconds.
-	 - debugging is turned off (Sorry about the spam)
+     - added /bunnykey command (with list, listall and add subcommands)
+     - locked doors close after 10 seconds.
+     - debugging is turned off (Sorry about the spam)
    - 0.4 ::
-	 - fixed /bunnykey permissions issue
-	 - implemented /bunnykey give command
-	 - added ability to turn off devilstats in the config. (this should have been in there earlier. Sorry)
-	 - Fixed a door bug where the bottom half of the door gets copied into the top
-	 - Door info now displays more info about doors (i.e. who locked it)  It's prettier too.
+     - fixed /bunnykey permissions issue
+     - implemented /bunnykey give command
+     - added ability to turn off devilstats in the config. (this should have been in there earlier. Sorry)
+     - Fixed a door bug where the bottom half of the door gets copied into the top
+     - Door info now displays more info about doors (i.e. who locked it)  It's prettier too.
 
 
-** Development
-   The repository is in git.  Go Nuts!  My to-do items and projects are inside of a text-file called Dev.org.  Pick one and go with it!  Or
-   do something else!  If you use Emacs, it is even easier to edit that file.  If you do plan on working on something, shoot me a note so we
-   don't invent eachohters wheel.  (that sounds dirty).
-
+# Local Variables:
+# tab-width: 8
+# org-toc-show-subtree-mode: nil
+# End:

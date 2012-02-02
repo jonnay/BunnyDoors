@@ -3,9 +3,35 @@
 *** TODO "Bunny Doors" text (in MC font) on the bottom
 ** PROJECT fix HTML export of Org
 *** TODO Different Pages per section 
-*** TODO make the markup more Compatible 
+*** TODO Readme.html that is simple, contains video, and link to ghpages
+*** TODO http://oli.jp/2011/github-pages-workflow/ ... automagic push of master to gh-pages...?
+
+** PROJECT Documentation
+*** PROJECT User Documentation
+**** PROJECT [[./Readme.org]] Primary Readme for github an bukkit dev
+***** TODO Preamble
+	  - What it does in a nutshell
+	  - Some cool things you can do with it.
+***** TODO Links 
+*** PROJECT [[./doc/Quickstart.org]] Quickstart 
+	
+**** DONE Installing
+	 CLOSED: [2012-02-01 Wed 13:45]
+**** DONE Adding a key
+	 CLOSED: [2012-02-01 Wed 13:45]
+**** DONE Adding a key to a user
+	 CLOSED: [2012-02-01 Wed 13:45]
+**** DONE Locking a door
+	 CLOSED: [2012-02-01 Wed 13:45]
+**** DONE Unlocking a door
+	 CLOSED: [2012-02-01 Wed 13:45]
+*** PROJECT [[./doc/Config.org]] Config
+*** PROJECT [[./doc/Commands.org]] Commands
+*** PROJECT [[./doc/Permissions.org]] Permissions 
+*** PROJECT [[./doc/Roadmap.org]] Roadmap
+*** PROJECT [[./doc/Dev.org]] Developer Documentation 																				   :PROJECT:
 ** PROJECT Video 
-* Future Versions
+* Future Versions [[./doc/Roadmap.org]]
 ** FINISHED 0.1 Release
    CLOSED: [2012-01-29 Sun 19:38]
 *** FINISHED Outputs data to the console when a user uses a door
@@ -97,7 +123,7 @@
 *** PROJECT Trap Doors
 *** PROJECT Chests
 ** PROJECT 0.6
-*** PROJECT Iron Door opening, block-based-keys
+*** PROJECT Iron Door opening, block-based-key
 ** PROJECT 0.8 Integration release
 *** PROJECT when a door is modified it should throw event
 	- remove changed doors from queue 
@@ -105,31 +131,8 @@
 
 ** PROJECT 0.9 Optimization release
 *** PROJECT Set up DB persistence 
-*** PROJECT Keep a queue of most recently used doors in memory perhaps (to avoid costly lookups?)
-	- all doors in the queue
-	- user-changeable in the config, so large servers can use more memory on queue, small servers less
 
 ** PROJECT 1.0 Fix bugs from previous releases
-** Future Features
-*** SOMEDAY  locked irondoors take on the lock from the block they are on (settable in a config)
-*** SOMEDAY Single-use keys
-*** SOMEDAY Temporary Keys
-*** SOMEDAY Keys per world!
-*** SOMEDAY Custom lock messages!
-
-*** SOMEDAY Non-indentifiable locks! ("This door is locked" vs "This door is locked, you need the iron key.")
-*** SOMEDAY Lock chests with keys!
-*** SOMEDAY Allow opening of iron doors with use, if the key is held!
-*** SOMEDAY optional spoutcraft integration, to show keys in the inventory screen on the side!
-*** SOMEDAY selectable persistence!  Yaml, sqlite or MySQL!
-*** SOMEDAY herocraft lockpicking skill?
-
-   - v0.1 ::
-
-   - v0.2 :: 
-   - Future Versions ::
-
-*** SOMEDAY send note block effects to play a dragonquest like door opening sound 
 * Test
 ** Run
 #+begin_src emacs-lisp 
@@ -243,4 +246,6 @@ target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
   - Helpers at #bukkitdev  
 	- esp. ACStache 
   - McMMO devs for providing a decent pom.xml
-  - LWC devs
+  - LWC devs, for opening their source
+  - Multiverse, for having awesome documentaiton.
+
