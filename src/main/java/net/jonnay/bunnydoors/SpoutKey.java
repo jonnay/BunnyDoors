@@ -1,3 +1,7 @@
+import org.getspout.spoutapi.event.inventory.InventoryOpenEvent;
+import org.getspout.spoutapi.event.inventory.InventoryCloseEvent;
+
+
 public class SpoutKey {
     /*
 

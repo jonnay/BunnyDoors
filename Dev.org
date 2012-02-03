@@ -8,12 +8,16 @@
 
 ** PROJECT Documentation
 *** PROJECT User Documentation
-**** PROJECT [[./Readme.org]] Primary Readme for github an bukkit dev
-***** TODO Preamble
+**** FINISHED [[./Readme.org]] Primary Readme for github an bukkit dev
+	 CLOSED: [2012-02-02 Thu 12:49]
+***** DONE Preamble
+	  CLOSED: [2012-02-02 Thu 12:49]
 	  - What it does in a nutshell
 	  - Some cool things you can do with it.
-***** TODO Links 
-*** PROJECT [[./doc/Quickstart.org]] Quickstart 
+***** DONE Links
+	  CLOSED: [2012-02-02 Thu 12:49]
+*** FINISHED [[./doc/Quickstart.org]] Quickstart
+	 CLOSED: [2012-02-02 Thu 12:49]
 	
 **** DONE Installing
 	 CLOSED: [2012-02-01 Wed 13:45]
@@ -118,6 +122,8 @@
 **** TODO Test 
 *** FINISHED Fixed bad door close bug, where the top half of the door would turn into the bottom half
 *** FINISHED Fixed horrible permissions issue where /bunnykeys was accessible to everyone.
+** PROJECT 0.5 - Spout release!
+*** TODO Plugin permissions in plugin.yaml
 ** PROJECT 0.5
 *** PROJECT Players grant specific keys with bunnydoor.keymaster.<key> permission
 *** PROJECT Trap Doors
@@ -185,7 +191,6 @@ scp -v target/BunnyDoors.jar jonny@70.75.70.233:/usr/local/minecraft/server/plug
 #+begin_src sh :results output
 mvn install
 cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
-
 #+end_src
 
 #+results:
@@ -201,7 +206,7 @@ cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
 [INFO] Copying 3 resources
 [INFO] 
 [INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ BunnyDoors ---
-[INFO] Compiling 5 source files to /Users/jonathana/projects/BunnyDoors/target/classes
+[INFO] Compiling 3 source files to /Users/jonathana/projects/BunnyDoors/target/classes
 [INFO] 
 [INFO] --- maven-resources-plugin:2.4.3:testResources (default-testResources) @ BunnyDoors ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
@@ -233,8 +238,8 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 5.463s
-[INFO] Finished at: Wed Feb 01 01:44:04 MST 2012
+[INFO] Total time: 6.163s
+[INFO] Finished at: Thu Feb 02 17:18:04 MST 2012
 [INFO] Final Memory: 10M/81M
 [INFO] ------------------------------------------------------------------------
 target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar

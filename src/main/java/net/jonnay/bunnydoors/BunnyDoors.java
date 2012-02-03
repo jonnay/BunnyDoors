@@ -3,24 +3,32 @@ package net.jonnay.bunnydoors;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.Material;
+
 import org.bukkit.entity.Player;
 import org.bukkit.block.Block;
 
+
 import java.util.List;
+
 
 import com.smilingdevil.devilstats.api.DevilStats;
 
+
 import net.milkbowl.vault.Vault;
-import org.bukkit.plugin.RegisteredServiceProvider;
 import net.milkbowl.vault.permission.Permission;
 
+
 public class BunnyDoors extends JavaPlugin {
-	public static final boolean DEBUG = false;
+	public static final boolean DEBUG = true;
 	public static final Logger log = Bukkit.getLogger();
 	public static BunnyDoor instance;
 	public static final int AUTO_SAVE_TIME = 20 * 60 * 5; // 20 ticks * 60 seconds -> 5 mins 
@@ -32,9 +40,16 @@ public class BunnyDoors extends JavaPlugin {
 	
 	public DoorSerializer doorSerializer; 
 
+
+	// I smell an abstract coming on!  3rd strike would mean refactoring.
 	public boolean hasExtendedPermissionSupport;
 	public static Permission permissions;
 
+	// strike 2...
+	public boolean hasExtendedSpoutSupport;
+	public static Plugin spout = null;
+	private BunnyKeyInventoryListener invListener;
+	
 	private class SerializerSaver implements Runnable {
 		DoorSerializer d;
 		
@@ -49,7 +64,7 @@ public class BunnyDoors extends JavaPlugin {
 	
 	public static void Debug(String message) {
 		if (DEBUG)
-			log.info("(DEBUG) "+message);
+			log.info("[BunnyDoors] (DEBUG) "+message);
 	}
 
 	public void onDisable() {
@@ -65,6 +80,7 @@ public class BunnyDoors extends JavaPlugin {
 		myExecutor = new BunnyDoorsCommandExecutor(this);
 		getCommand("bunnydoor").setExecutor(myExecutor);
 		getCommand("bunnykey").setExecutor(new BunnyKeysCommandExecutor(this));
+
 		getServer().getPluginManager().registerEvents(new DoorListener(this), this);
 
 		this.getConfig().options().copyDefaults(true);
@@ -88,6 +104,7 @@ public class BunnyDoors extends JavaPlugin {
         saveConfig();
 
 		hasExtendedPermissionSupport = this.setupPermissions();
+		hasExtendedSpoutSupport = this.setupSpout();
 		
 		System.out.println(this.toString() + " enabled");
 	}
@@ -169,7 +186,7 @@ public class BunnyDoors extends JavaPlugin {
 		player.sendMessage("Use /bunnykey list to get a list of your keys!");
 	}
 	
-	public Boolean setupPermissions()
+	public boolean setupPermissions()
     {
 		try {
 			
@@ -186,7 +203,26 @@ public class BunnyDoors extends JavaPlugin {
 		}
     }   
 
-	
+	public boolean setupSpout() {
+		try {
+			spout = Bukkit.getServer().getPluginManager().getPlugin("Spout");
+
+			BunnyDoors.Debug("Result of getting spout:" + spout.toString());
+			
+			if (null == spout)
+				return false;
+
+		    invListener = new BunnyKeyInventoryListener(this);
+			return true;
+			
+		} catch (Exception e) {
+			log.warning("Trying to enable extended key support through spout failed.");
+			if (DEBUG)
+				e.printStackTrace();
+
+			return false;
+		}
+	}
 
 	/**
 	   Keys on teh client?  MAYBE!!! (after lots of work... maybe)

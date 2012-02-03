@@ -20,13 +20,12 @@
 			<layout>default</layout>
 		</repository>
 		
-		<!-- No spout yet.  maybe? never?
         <repository>
             <id>spout-repo</id>
             <name>Spout API</name>
             <url>http://repo.getspout.org/</url>
             <layout>default</layout>
-        </repository>-->
+        </repository>
     </repositories>
 	
     <dependencies>
@@ -40,13 +39,12 @@
             <artifactId>Vault</artifactId>
             <version>1.2.7</version>
         </dependency>
-		<!--
 		<dependency>
             <groupId>org.getspout</groupId>
             <artifactId>spoutpluginapi</artifactId>
             <version>dev-SNAPSHOT</version>
             <scope>provided</scope>
-        </dependency>-->
+        </dependency>
     </dependencies>
 	
     <build>

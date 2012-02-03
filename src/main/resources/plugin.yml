@@ -1,7 +1,9 @@
 name: BunnyDoors
 main: net.jonnay.bunnydoors.BunnyDoors
-version: 0.4
+version: 0.5
 author: Jonnay
+website: https://github.com/jonnay/BunnyDoors/wiki
+softdepend: [Vault, Spout]
 commands:
     bunnydoor:
         description: use /bunnydoor help for help!

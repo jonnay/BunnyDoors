@@ -2,7 +2,7 @@
                                 ======
 
 Author: Jonathan Arkell
-Date: 2012-02-01 22:55:40 MST
+Date: 2012-02-02 17:04:02 MST
 
 
 Table of Contents
@@ -15,15 +15,18 @@ Table of Contents
 1 Bunny Doors 
 --------------
 
+  This plugin lets you lock specific doors on your server, with a particular key.  Only users with that key can open the door.  
+
   - *Quick Start* : [https://github.com/jonnay/BunnyDoors/wiki/Quickstart]
   - *Documentation* : [https://github.com/jonnay/BunnyDoors/wiki/]
   - *Source Code* : [https://github.com/jonnay/BunnyDoors/]
 
-  This plugin lets you lock specific doors on your server, with a particular key.  Only users with that key can open the door.  
-
   There are plenty of plugins that give you specific custom permissions for doors but this plugin is different.  The point of this plugin is
   to emulate old-school JRPG doors (Think Dragon Quest).  It aims to be easy for you to create doors that require keys.  I've been wanting
   doors-with-permissions for a long time now, and decided to roll my own.
+
+  Make Citizens NPCs give your players special keys for completing quests!  Give your theif Hero class the ability to pick locks!   Give
+  VIPs special access! So many possibilities!
   
 
 2 Open source!
