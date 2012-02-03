@@ -47,5 +47,4 @@
 
 # Local Variables:
 # tab-width: 8
-# org-toc-show-subtree-mode: nil
 # End:

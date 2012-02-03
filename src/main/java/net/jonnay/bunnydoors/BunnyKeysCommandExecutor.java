@@ -26,7 +26,8 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 				public boolean run(CommandSender s, String[] args) {
 					String out = "";
 					Player p = (Player) s;
-					
+
+					// Strike 2 ... other location: BunnykeyInventoryListner.showKeys
 					for (String key : plugin.getKeys()) {
 						if (plugin.playerHasKey(key, p)) {
 							out += key + " ";

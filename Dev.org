@@ -198,7 +198,7 @@ cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building Bunny Doors 0.4.0
+[INFO] Building Bunny Doors 0.5.0
 [INFO] ------------------------------------------------------------------------
 [INFO] 
 [INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ BunnyDoors ---
@@ -233,13 +233,13 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO] Building jar: /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar
 [INFO] 
 [INFO] --- maven-install-plugin:2.3.1:install (default-install) @ BunnyDoors ---
-[INFO] Installing /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.4.0/BunnyDoors-0.4.0.jar
-[INFO] Installing /Users/jonathana/projects/BunnyDoors/pom.xml to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.4.0/BunnyDoors-0.4.0.pom
+[INFO] Installing /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.5.0/BunnyDoors-0.5.0.jar
+[INFO] Installing /Users/jonathana/projects/BunnyDoors/pom.xml to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.5.0/BunnyDoors-0.5.0.pom
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 6.163s
-[INFO] Finished at: Thu Feb 02 17:18:04 MST 2012
+[INFO] Total time: 6.274s
+[INFO] Finished at: Fri Feb 03 01:03:34 MST 2012
 [INFO] Final Memory: 10M/81M
 [INFO] ------------------------------------------------------------------------
 target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
@@ -253,4 +253,5 @@ target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
   - McMMO devs for providing a decent pom.xml
   - LWC devs, for opening their source
   - Multiverse, for having awesome documentaiton.
+
 

@@ -28,7 +28,7 @@ import net.milkbowl.vault.permission.Permission;
 
 
 public class BunnyDoors extends JavaPlugin {
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = false;
 	public static final Logger log = Bukkit.getLogger();
 	public static BunnyDoor instance;
 	public static final int AUTO_SAVE_TIME = 20 * 60 * 5; // 20 ticks * 60 seconds -> 5 mins 

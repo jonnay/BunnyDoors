@@ -3,7 +3,7 @@
 	<artifactId>BunnyDoors</artifactId>
 	<packaging>jar</packaging>
     <groupId>jonnay.bunnydoors</groupId>
-    <version>0.4.0</version>
+    <version>0.5.0</version>
     <name>Bunny Doors</name>
     <url>https://github.com/jonnay/BunnyDoors</url>
     <description></description>
