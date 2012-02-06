@@ -71,9 +71,8 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 						return error(s, "Not a valid Player name");
 					}
 
-					if (plugin.hasExtendedPermissionSupport) {
-						plugin.permissions.playerAdd(target, BunnyDoors.keyToPermission(args[2]));
-						s.sendMessage("Added "+args[2]+" to "+args[1]);
+					if (plugin.grantKey(target, args[2])) {
+						error(s, "Could not grant the key!  Check the logs for the reason why!");
 					}
 					
 					return true;
@@ -103,14 +102,15 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 					}
 
 					if (!plugin.isValidKey(args[1])) {
-						return error(s, args[1] + " is not a valid key");
+						error(s, args[1] + " is not a valid key");
+						return false;
 					}
 
 					
 					BunnyChest c = (BunnyChest) BunnyDoor.getFromBlock(b);
-					c.addKey(args[1]);
-					
-					return false;
+					c.addTreasureKey(args[1]);
+					s.sendMessage("Put the key "+args[1]+" in the chest.");
+					return true;
 				}
 
 				public void usage(CommandSender s) {
@@ -132,7 +132,8 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 					}
 
 					BunnyChest c = (BunnyChest) BunnyDoor.getFromBlock(b);
-					c.removeKey();
+					c.removeTreasureKey();
+					s.sendMessage("Removed the key from the chest.");
 					return true;
 				}
 

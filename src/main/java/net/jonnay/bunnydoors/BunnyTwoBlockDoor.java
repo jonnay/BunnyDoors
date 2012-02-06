@@ -41,10 +41,10 @@ public class BunnyTwoBlockDoor extends BunnyDoor {
 	}
 	
 	public BunnyTwoBlockDoor(Block b) {
-		setId(createIdFromBlock(b));
+		setId(createIdFromBlock(getIdBlockFromBlock(b)));
 		setKey(BunnyDoor.plugin.doorSerializer.getDoorKey(id));
 		setLocker(BunnyDoor.plugin.doorSerializer.getDoorLocker(id));		
-		setBlock(b);
+		setBlock(getIdBlockFromBlock(b));
 	}
 	
 	protected void setDoorState(boolean state) {

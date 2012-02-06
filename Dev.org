@@ -122,15 +122,20 @@
 **** TODO Test 
 *** FINISHED Fixed bad door close bug, where the top half of the door would turn into the bottom half
 *** FINISHED Fixed horrible permissions issue where /bunnykeys was accessible to everyone.
-** PROJECT 0.5 - Spout release!
-*** TODO Plugin permissions in plugin.yaml
-** PROJECT 0.5
-*** PROJECT Players grant specific keys with bunnydoor.keymaster.<key> permission
-*** PROJECT Trap Doors
+** FINISHED 0.5 - Spout release!
+   CLOSED: [2012-02-06 Mon 11:50]
+*** DONE Plugin permissions in plugin.yaml
+	 CLOSED: [2012-02-06 Mon 11:50]
+** PROJECT 0.6
 *** PROJECT Chests
 **** TODO test protection of chests
 **** TODO Test keys inside chests
-** PROJECT 0.6
+***** TODO add debug
+**** TODO Fix info to only infoize if it can cast
+** PROJECT 0.7
+*** PROJECT Players grant specific keys with bunnydoor.keymaster.<key> permission
+*** PROJECT Trap Doors
+
 *** PROJECT Iron Door opening, block-based-key
 ** PROJECT 0.8 Integration release
 *** PROJECT when a door is modified it should throw event
@@ -145,10 +150,14 @@
 ** Run
 #+begin_src emacs-lisp 
 (save-excursion
+ (set-buffer "Readme.org")
  (let ((fill-column 80))
-   (set-buffer "Readme.org")
    (org-babel-tangle)
-   (org-export-as-ascii 3)))
+   (org-export-as-ascii 3))
+ ;(let ((fill-column 9999))
+ ;  (org-export-as-html 2 nil nil nil 1))
+)
+ 
 (mcstat-run-minecraft)
 (pop-to-buffer "*mcstat-mc*")
 #+end_src
@@ -200,7 +209,7 @@ cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building Bunny Doors 0.5.0
+[INFO] Building Bunny Doors 0.6.0
 [INFO] ------------------------------------------------------------------------
 [INFO] 
 [INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ BunnyDoors ---
@@ -235,19 +244,19 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO] Building jar: /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar
 [INFO] 
 [INFO] --- maven-install-plugin:2.3.1:install (default-install) @ BunnyDoors ---
-[INFO] Installing /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.5.0/BunnyDoors-0.5.0.jar
-[INFO] Installing /Users/jonathana/projects/BunnyDoors/pom.xml to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.5.0/BunnyDoors-0.5.0.pom
+[INFO] Installing /Users/jonathana/projects/BunnyDoors/target/BunnyDoors.jar to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.6.0/BunnyDoors-0.6.0.jar
+[INFO] Installing /Users/jonathana/projects/BunnyDoors/pom.xml to /Users/jonathana/.m2/repository/jonnay/bunnydoors/BunnyDoors/0.6.0/BunnyDoors-0.6.0.pom
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 6.274s
-[INFO] Finished at: Fri Feb 03 01:03:34 MST 2012
+[INFO] Total time: 6.218s
+[INFO] Finished at: Mon Feb 06 13:16:36 MST 2012
 [INFO] Final Memory: 10M/81M
 [INFO] ------------------------------------------------------------------------
 target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
 #+end_example
 
-** Buld results
+
 
 * Giants
   - Helpers at #bukkitdev  

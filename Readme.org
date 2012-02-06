@@ -1,5 +1,3 @@
-#+OPTIONS toc:0 
-#+STYLE: <!-- no styles on this readme-->
 * Bunny Doors 
 
   This plugin lets you lock specific doors on your server, with a particular key.  Only users with that key can open the door.  

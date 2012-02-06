@@ -39,24 +39,32 @@ public class BunnyChest extends BunnyDoor {
 	}
 	
 	public BunnyChest(Block b) {
-		setId(createIdFromBlock(b));
+		setId(createIdFromBlock(getIdBlockFromBlock(b)));
 		setKey(BunnyDoor.plugin.doorSerializer.getDoorKey(id));
-		setLocker(BunnyDoor.plugin.doorSerializer.getDoorLocker(id));		
-		setBlock(b);
+		setLocker(BunnyDoor.plugin.doorSerializer.getDoorLocker(id));
+		treasureKey = BunnyDoor.plugin.doorSerializer.getTreasureKey(id);
+		setBlock(getIdBlockFromBlock(b));
 	}
 	
 	protected void setDoorState(boolean state) {
 	}
 
-	public boolean hasKey() {
-		return (key != null);
-	}
-	
-	public void addKey(String key) {
-		this.treasureKey = key;
+	public boolean hasTreasureKey() {
+		return (treasureKey != null);
 	}
 
-	public void removeKey() {
+	public String getTreasureKey() {
+		return treasureKey;
+	}
+	
+	public void addTreasureKey(String key) {
+		this.treasureKey = key;
+		this.setNative(false);
+		BunnyDoor.plugin.doorSerializer.setTreasureKey(id, key);
+	}
+
+	public void removeTreasureKey() {
 		this.treasureKey = null;
+		BunnyDoor.plugin.doorSerializer.removeTreasureKey(id);
 	}
 }

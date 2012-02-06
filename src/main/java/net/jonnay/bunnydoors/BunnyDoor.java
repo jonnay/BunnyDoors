@@ -100,6 +100,10 @@ public abstract class BunnyDoor {
 	public void setBlock(Block b) {
 		this.block = b;
 	}
+
+	public void setNative(boolean n) {
+		this.nativeDoor = n;
+	}
 	
 	public boolean isLocked() {
 		String key = getKey();

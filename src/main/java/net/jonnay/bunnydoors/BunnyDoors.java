@@ -18,10 +18,12 @@ import org.bukkit.block.Block;
 
 
 import java.util.List;
-
+import java.util.ArrayList;
 
 import com.smilingdevil.devilstats.api.DevilStats;
 
+import org.getspout.spoutapi.SpoutManager;
+import org.getspout.spoutapi.player.SpoutPlayer;
 
 import net.milkbowl.vault.Vault;
 import net.milkbowl.vault.permission.Permission;
@@ -76,10 +78,10 @@ public class BunnyDoors extends JavaPlugin {
 	}
 
 	public List<String> getKeysForPlayer(Player p) {
-		List<String> out = new List<String>(); 
-		for (String key : plugin.getKeys()) {
+		ArrayList<String> out = new ArrayList<String>(); 
+		for (String key : getKeys()) {
 			if (playerHasKey(key, p)) {
-				out.put(key);
+				out.add(key);
 			}
 		}
 		return out;
@@ -196,21 +198,27 @@ public class BunnyDoors extends JavaPlugin {
 		player.sendMessage("Use /bunnykey list to get a list of your keys!");
 	}
 
-	public void sendGetKeyMessage(Player p, String key) {
-		if (!hasExtendedPermissionSupport) {
-			p.sendMessage("You can't get the key in this chest!  Tell your server admin to install vault!");
-			log.severe("No Vault support!  Can't give player "+p.getName()+" the BunnyKey "+key);
-			return;
-		}
+	public boolean grantKey(Player p, String key) {
 		
-		 
-		// if (SpoutManager.getPlayer(p).isSpoutCraftEnabled()) {
-		// 	SpoutManager.getPlayer(p).sendNotification("You found a key!",key + "key");
-		// } else {
-			p.sendMessage("You found a key!  You found the "+key+" key!");
-		// }
+		if (hasExtendedPermissionSupport) {
+			permissions.playerAdd(p, BunnyDoors.keyToPermission(key));
+
+			if (SpoutManager.getPlayer(p).isSpoutCraftEnabled()) {
+				SpoutManager.getPlayer(p).sendNotification("You found a key!",key + "key", org.bukkit.Material.WOOD_DOOR);
+			} else {
+				p.sendMessage("You found a key!  You found the "+key+" key!");
+			}
+			return true;
 						  
+		} else {
+			p.sendMessage("You can't have a key given to you!  Tell your server admin to install vault!");
+			log.severe("No Vault support!  Can't give player "+p.getName()+" the BunnyKey "+key);
+			return false;
+		}
+
+	   
 	}
+	
 	
 	public boolean setupPermissions()
     {

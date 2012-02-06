@@ -76,9 +76,10 @@ public class DoorListener implements Listener {
 		}
 
 		if (BunnyChest.isChest(block)) {
+			BunnyDoors.Debug("Checking Chest");
 			BunnyChest c = (BunnyChest) d;
-			if (c.hasKey()) {
-				plugin.sendGetKeyMessage(player, c.getKey());
+			if (c.hasTreasureKey()) {
+				plugin.grantKey(player, c.getTreasureKey());		  
 			}
 		}
 		

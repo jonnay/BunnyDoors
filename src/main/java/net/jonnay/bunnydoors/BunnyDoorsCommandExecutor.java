@@ -154,13 +154,18 @@ public class BunnyDoorsCommandExecutor implements CommandExecutor {
 		sender.sendMessage(msg);
 		
 		BunnyDoor d = BunnyDoor.getFromBlock(b);
-		if (d.isNative()) {
+		if (d == null) {
+			sender.sendMessage("Not a block that can become a BunnyDoor");
+		} else if (d.isNative()) {
 			sender.sendMessage(ChatColor.WHITE + "Not A Bunny Door");
 		} else {
 			sender.sendMessage(ChatColor.LIGHT_PURPLE + "Bunny Door");
 			sender.sendMessage(ChatColor.LIGHT_PURPLE + "ID: " + ChatColor.WHITE + d.getId() + "  " );
 			sender.sendMessage(ChatColor.LIGHT_PURPLE + "Key: " + ChatColor.WHITE + d.getKey()+ "  ");
 			sender.sendMessage(ChatColor.LIGHT_PURPLE + "Locked By: " + ChatColor.WHITE + d.getLocker());
+			if (BunnyChest.isChest(b)) {
+				sender.sendMessage(ChatColor.LIGHT_PURPLE+ "Contains Key: " + ChatColor.WHITE + ((BunnyChest)d).getTreasureKey());
+			}
 		}
 
 		return true;
