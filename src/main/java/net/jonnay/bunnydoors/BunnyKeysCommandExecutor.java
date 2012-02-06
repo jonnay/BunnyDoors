@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import java.util.List;
+import org.bukkit.block.Block;
 
 public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 
@@ -83,6 +84,63 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 				}
 			});
 
+		addSubExecutor("put", new SubExecutor() {
+				protected String needsPerm() {
+					return "bunnydoors.keycmd.admin.put";
+				}
+
+				public boolean run(CommandSender s, String[] args) {
+					Player p = (Player) s;
+					Block b = p.getTargetBlock(null, 10);
+
+					if (!BunnyChest.isChest(b)) {
+						error(s, "You aren't looking at a chest!");
+					}
+					
+					if (!plugin.hasExtendedPermissionSupport) {
+						error(s, "You need Vault installed so that users can take keys!");
+						s.sendMessage("The key has been added, but install Vault so that your users can take it.");
+					}
+
+					if (!plugin.isValidKey(args[1])) {
+						return error(s, args[1] + " is not a valid key");
+					}
+
+					
+					BunnyChest c = (BunnyChest) BunnyDoor.getFromBlock(b);
+					c.addKey(args[1]);
+					
+					return false;
+				}
+
+				public void usage(CommandSender s) {
+					s.sendMessage(usageLine("put", "key", "Put <key> in the chest so players can find it."));
+				}			
+			});
+
+		addSubExecutor("take", new SubExecutor() {
+				protected String needsPerm() {
+					return "bunnydoors.kkeycmd.admin.put";
+				}
+
+				public boolean run(CommandSender s, String[] args) {
+					Player p = (Player) s;
+					Block b = p.getTargetBlock(null, 10);
+
+					if (!BunnyChest.isChest(b)) {
+						error(s, "You aren't looking at a chest!");
+					}
+
+					BunnyChest c = (BunnyChest) BunnyDoor.getFromBlock(b);
+					c.removeKey();
+					return true;
+				}
+
+				public void usage(CommandSender s) {
+					s.sendMessage(usageLine("take", "key", "Removes the key from the treasure chest."));
+				}			
+			});
+		
 		addSubExecutor("add", new SubExecutor() {
 				protected String needsPerm() {
 					return "bunnydoors.keycmd.admin.add";

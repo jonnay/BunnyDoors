@@ -7,55 +7,30 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.Effect;
 
-public class BunnyDoor {
+//TODO Refactor me soon?
+// This is the 'ideal' object model.  It might be too heavy.
+// - abstract BunnyLockable,
+//   - BunnyTrapDoor
+//   - abstract BunnyMultiBlockUnlockable
+//     - abstract BunnyTallUnlockable
+//       - BunnyWoodDoor,
+//       - BunnyIronDoor
+//     - abstract BunnyWideUnlockable
+//       - BunnyCjest 
+
+
+public abstract class BunnyDoor {
+	
+	protected static BunnyDoors plugin;
+
 	// can be updated to include chests, and trapdoors. 
 	public static boolean isDoor (Block b) {
-		return ((b.getType() == Material.WOODEN_DOOR) ||
-				(b.getType() == Material.IRON_DOOR_BLOCK));
+		return (BunnyTwoBlockDoor.isTwoBlockDoor(b) || BunnyChest.isChest(b));
 	}
-
-	public static boolean isTwoBlockDoor(Block b) {
-		return ((b.getType() == Material.WOODEN_DOOR) ||
-				(b.getType() == Material.IRON_DOOR_BLOCK));
-	}
-
-	protected static BunnyDoors plugin;
 	
 	// not happy about this...
 	public static void registerPlugin(BunnyDoors p) {
 		plugin = p;
-	}
-
-	/**
-	 * Returns the "id block" of a door block.
-	 * The id block is defined as the bottom half of the door.
-	 * Returns null if the passed in block isn't a door
-	 */
-	public static Block getIdBlockFromBlock(Block b) {
-		if (!isDoor(b)) {
-			BunnyDoors.Debug("Block recieved isn't a door.");
-			return null;
-		}
-
-		if (!isTwoBlockDoor(b)) {
-			BunnyDoors.Debug("Block recieved isn't a 2 block door");
-			return b;
-		}
-		
-		Block down = b.getRelative(BlockFace.DOWN);
-		Block up = b.getRelative(BlockFace.UP);
-
-		if (isDoor(down)) {
-			BunnyDoors.Debug("Returning lower block from getIdBlock");
-			return down;
-		} else if (isDoor(up)) {
-			BunnyDoors.Debug("Returning this block from getIdBlock");
-			return b;
-		} else {
-			BunnyDoors.Debug("Arg!  Up block and Down block both aren't doors!");
-			// This should never happen?
-			throw new RuntimeException("[BunnyDoors] Unreachable state!  Double Door block, but can't find other half!");
-		}
 	}
 
 	
@@ -66,33 +41,27 @@ public class BunnyDoor {
 	 * This ensures that the door will always have a consistent ID.
 	 */
 	public static BunnyDoor getFromBlock(Block b) {
-		Block idBlock = getIdBlockFromBlock(b);
 
-		if (null != idBlock) 
-			return new BunnyDoor(idBlock);
-		else
+		if (BunnyTwoBlockDoor.isTwoBlockDoor(b)) {
+			Block idBlock = BunnyTwoBlockDoor.getIdBlockFromBlock(b);
+			return new BunnyTwoBlockDoor(idBlock);
+		} else if (BunnyChest.isChest(b)) {
+			Block idBlock = BunnyChest.getIdBlockFromBlock(b);
+			return new BunnyChest(idBlock);
+		} else {
+			BunnyDoors.log.severe("Can't construct the door from the block!");
 			return null;
+		}
 	}
 
 
-	private String id;
-	private String key;
-	private String locker;
-	private Block block;
-	private boolean nativeDoor;
+	protected String id;
+	protected String key;
+	protected String locker;
+	protected Block block;
+	protected boolean nativeDoor;
 	
-	private BunnyDoor(Block b) {
-		id = createIdFromBlock(b);
-		key = BunnyDoor.plugin.doorSerializer.getDoorKey(id);
-		locker = BunnyDoor.plugin.doorSerializer.getDoorLocker(id);		
-		block = b;
-		if (key == null)
-			nativeDoor = true;
-		else
-			nativeDoor = false;
-	}
-
-	private String createIdFromBlock(Block b) {
+	protected String createIdFromBlock(Block b) {
 		return ""+
 			"x"+b.getX()+
 			"y"+b.getY()+
@@ -114,6 +83,22 @@ public class BunnyDoor {
 
 	public boolean isNative() {
 		return nativeDoor;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public void setLocker(String locker) {
+		this.locker = locker;
+	}
+
+	public void setBlock(Block b) {
+		this.block = b;
 	}
 	
 	public boolean isLocked() {
@@ -153,22 +138,7 @@ public class BunnyDoor {
 		return true;
 	}
 
-	private boolean setDoorState(boolean state) {
-		///  Snarfed from http://forums.bukkit.org/threads/opening-a-door.56454/ bergerkiller
-		Block above = block.getRelative(BlockFace.UP);
-
-		Door door = (Door) block.getType().getNewData(block.getData());
-		Door doorabove = (Door) above.getType().getNewData(above.getData());
-
-		door.setOpen(state);
-		doorabove.setOpen(state);
-
-		block.setData(door.getData(), true);
-		above.setData(doorabove.getData(), true);
-		
-		block.getWorld().playEffect(block.getLocation(), Effect.DOOR_TOGGLE, 0);
-		return true;
-	}
+	protected abstract void setDoorState(boolean state);
 	
 	public void open() {
 		setDoorState(true);

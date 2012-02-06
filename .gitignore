@@ -7,3 +7,9 @@
 /target/maven-archiver/pom.properties
 /liveServerConfig
 /target/*
+/.DS_Store
+/src/.DS_Store
+/src/main/.DS_Store
+/src/main/java/.DS_Store
+/src/main/java/net/.DS_Store
+/src/main/java/net/jonnay/.DS_Store

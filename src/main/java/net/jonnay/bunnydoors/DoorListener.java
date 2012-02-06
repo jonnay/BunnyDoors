@@ -75,6 +75,13 @@ public class DoorListener implements Listener {
 			}
 		}
 
+		if (BunnyChest.isChest(block)) {
+			BunnyChest c = (BunnyChest) d;
+			if (c.hasKey()) {
+				plugin.sendGetKeyMessage(player, c.getKey());
+			}
+		}
+		
 		return;
     }	
 }

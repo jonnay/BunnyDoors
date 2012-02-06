@@ -59,6 +59,17 @@ public class DoorSerializer {
 		return serializedDoors.getString(id+".locker");
 	}
 
+	public String getKeyTreasure(String id) {
+		return serializedDoors.getString(id+".treasurekey");
+	}
+	
+	public void addKeyTreasure(String id, String key) {
+		serializedDoors.set(id+".treasurekey", key);
+	}
+
+	public void removeKeyTreasure(String id, String key) {
+		serializedDoors.set(id+".treasurekey", null);
+	}
 	
 	public void setDoorToKey(String id, String keyholder, String key) {
 		serializedDoors.set(id+".key", key);

@@ -185,6 +185,22 @@ public class BunnyDoors extends JavaPlugin {
 		player.sendMessage("Sorry, That door is locked, you need the "+key+" key to open it.");
 		player.sendMessage("Use /bunnykey list to get a list of your keys!");
 	}
+
+	public void sendGetKeyMessage(Player p, String key) {
+		if (!hasExtendedPermissionSupport) {
+			p.sendMessage("You can't get the key in this chest!  Tell your server admin to install vault!");
+			log.severe("No Vault support!  Can't give player "+p.getName()+" the BunnyKey "+key);
+			return;
+		}
+		
+		 
+		// if (SpoutManager.getPlayer(p).isSpoutCraftEnabled()) {
+		// 	SpoutManager.getPlayer(p).sendNotification("You found a key!",key + "key");
+		// } else {
+			p.sendMessage("You found a key!  You found the "+key+" key!");
+		// }
+						  
+	}
 	
 	public boolean setupPermissions()
     {

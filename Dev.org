@@ -128,6 +128,8 @@
 *** PROJECT Players grant specific keys with bunnydoor.keymaster.<key> permission
 *** PROJECT Trap Doors
 *** PROJECT Chests
+**** TODO test protection of chests
+**** TODO Test keys inside chests
 ** PROJECT 0.6
 *** PROJECT Iron Door opening, block-based-key
 ** PROJECT 0.8 Integration release
