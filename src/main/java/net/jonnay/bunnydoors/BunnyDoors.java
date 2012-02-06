@@ -74,6 +74,16 @@ public class BunnyDoors extends JavaPlugin {
 	public List<String> getKeys() {
 		return getConfig().getStringList("keys");
 	}
+
+	public List<String> getKeysForPlayer(Player p) {
+		List<String> out = new List<String>(); 
+		for (String key : plugin.getKeys()) {
+			if (playerHasKey(key, p)) {
+				out.put(key);
+			}
+		}
+		return out;
+	}
 	
 	public void onEnable() {
 
