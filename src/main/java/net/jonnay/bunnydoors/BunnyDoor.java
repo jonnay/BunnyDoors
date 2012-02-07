@@ -119,7 +119,7 @@ public abstract class BunnyDoor {
 		if (key == null) {
 			return true;
 		}
-		boolean perm = p.hasPermission("bunnydoors.key."+key);
+		boolean perm = plugin.playerHasKey(key, p);
 
 		BunnyDoors.Debug("checking door "+id+" for key:"+key+" bunnydoors.key."+key+" is: "+perm);
 

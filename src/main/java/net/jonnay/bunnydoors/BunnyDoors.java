@@ -204,7 +204,8 @@ public class BunnyDoors extends JavaPlugin {
 			permissions.playerAdd(p, BunnyDoors.keyToPermission(key));
 
 			if (SpoutManager.getPlayer(p).isSpoutCraftEnabled()) {
-				SpoutManager.getPlayer(p).sendNotification("You found a key!",key + "key", org.bukkit.Material.WOOD_DOOR);
+				BunnyDoors.Debug("Sending notification for "+key);
+				SpoutManager.getPlayer(p).sendNotification("Key Find!", key, org.bukkit.Material.IRON_DOOR);
 			} else {
 				p.sendMessage("You found a key!  You found the "+key+" key!");
 			}

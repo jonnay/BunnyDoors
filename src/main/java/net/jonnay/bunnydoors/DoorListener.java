@@ -72,6 +72,7 @@ public class DoorListener implements Listener {
 			} else {
 				plugin.sendLockedMessage(player, d.getKey() );
 				event.setCancelled(true);
+				return;
 			}
 		}
 

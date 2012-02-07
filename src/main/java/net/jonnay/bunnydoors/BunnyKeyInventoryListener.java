@@ -32,8 +32,10 @@ public class BunnyKeyInventoryListener implements Listener {
 
 	@EventHandler
 	public void onInventoryOpen(InventoryOpenEvent event) {
-		BunnyDoors.Debug("Opened Inventory");
-		showKeys(event.getPlayer());
+		BunnyDoors.Debug("Opened Inventory:"+event.getInventory().getName());
+		if (event.getInventory().getName().equals("Inventory")) {
+			showKeys(event.getPlayer());
+		}
 	} 
 
 	void showKeys(Player p) {

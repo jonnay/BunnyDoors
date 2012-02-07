@@ -249,8 +249,8 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 6.218s
-[INFO] Finished at: Mon Feb 06 13:16:36 MST 2012
+[INFO] Total time: 4.975s
+[INFO] Finished at: Mon Feb 06 20:18:31 MST 2012
 [INFO] Final Memory: 10M/81M
 [INFO] ------------------------------------------------------------------------
 target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
