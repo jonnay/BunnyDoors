@@ -2,7 +2,7 @@
                                 ======
 
 Author: Jonathan Arkell
-Date: 2012-02-06 20:18:59 MST
+Date: 2012-02-06 20:45:12 MST
 
 
 Table of Contents
@@ -20,7 +20,7 @@ Table of Contents
 1 Bunny Doors 
 --------------
 
-  This plugin lets you lock specific doors on your server, with a particular key.  Only users with that key can open the door.  
+  This plugin lets you lock specific doors and chests on your server with a particular key.  Only players with that key can open the door.  
 
   - *Quick Start* : [https://github.com/jonnay/BunnyDoors/wiki/Quickstart]
   - *Documentation* : [https://github.com/jonnay/BunnyDoors/wiki/]
@@ -39,6 +39,7 @@ Table of Contents
    - Use with any permissions system.
    - Simple Spout integration, with more coming!
    - Keys are implemented as permissions, so you can use it with a variety of other plugins to enhance your experience.
+   - With Vault installed, you can put keys inside of chests!
 
 2 Requirements 
 ---------------
@@ -58,15 +59,14 @@ Table of Contents
 2.2 Vault:  [http://dev.bukkit.org/server-mods/vault/]
 ======================================================
 
-   If you have vault installed, you will be able to use the ~/bunnykey give~ command, which will let you give keys to users. If you want
-   your users to be able to take keys from chests, you will also need Vault for this.
+   - Gives you access to the ~/bunnykey give~ command
+   - Allows keys to be put inside of chests 
 
 2.3 Spout: [http://dev.bukkit.org/server-mods/spout/]
 =====================================================
 
-   If you have spout installed, and your players are using spoutcraft, then when they open the inventory a little message pops up telling
-   the user what keys they currently have.
-
+   - Allows keys to be put inside of chests
+   - Sends "Achievement Get!" style notifications when the user opens their inventory, or gets a key from a chest.
 
 3 Open source!
 --------------
@@ -105,6 +105,10 @@ Table of Contents
      - Door info now displays more info about doors (i.e. who locked it)  It's prettier too.
    0.5:
      - Added very basic spout support through the notification interface.  Note that this is only a "soft dependency".  You don't need spout
-       to make it go! 
+       to make it go!
+   0.6:
+     - Chests are now lockable too.
+     - Added API Call for other plugins
+     - A key can be put inside of chests with ~/bunnykey put <key>~ and taken out with ~/bunnykey take~
 
 

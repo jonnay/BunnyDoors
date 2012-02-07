@@ -1,38 +1,400 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ <?xml version="1.0" encoding="iso-8859-1"?> <!DOCTYPE html PUBLIC
+"-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 lang="en" xml:lang="en">
 <head>
-<title>Readme</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2012-02-03 01:10:22 MST"/>
-<meta name="author" content="Jonathan Arkell"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<title>Readme</title> <meta http-equiv="Content-Type"
+content="text/html;charset=iso-8859-1"/> <meta name="generator"
+content="Org-mode"/> <meta name="generated" content="2012-02-06
+20:45:19 MST"/> <meta name="author" content="Jonathan Arkell"/>
+<meta name="description" content=""/> <meta name="keywords"
+content=""/>
+<style type="text/css">
+@charset "UTF-8";
 
-<!-- no styles on this readme-->
+/*************/ /* XHTML 1.1 */ /*************/
+
+/* document structure */ html {
+	display: block; font-family: sans-serif; margin: 0; padding: 0;
+}
+
+/* document head */ head {
+	display: none; } /* this hides the following additional elements:
+   title, base, meta, link, style, script, noscript
+
+/* document body */ body {
+	display: block; background-color: #ddd;
+}
+
+div {
+	display: block; }
+
+/* paragraphs */ p {
+	max-width: 44em; margin: 0; padding: 0;
+}
+
+/* headings */ h1, h2, h3, h4, h5, h6 {
+	font-size: 100%; font-style: normal; font-weight: normal; margin:
+	1em 1.5em; padding: 0; text-align: left;
+}
+
+h1 {
+	font-size: 200%; font-style: italic; font-weight: lighter;
+	margin-top: 0; margin-bottom: 0.5em; text-align: center;
+}
+
+h2 {
+	text-transform: uppercase; }
+
+h3 {
+	font-variant: small-caps; }
+
+h4 {
+	font-variant: small-caps; }
+
+h5 {
+	font-style: italic; }
+
+h6 {
+	font-style: italic; float: left; margin: 0; padding: 0;
+	margin-right: 1ex;
+}
+
+/* lists */ ul, ol, dl {
+	max-width: 33em; }
+
+ul {
+	list-style-position: outside; list-style-type: circle;
+	padding-left: 0; margin-left: 0;
+}
+
+ol {
+	list-style-position: outside; list-style-type: decimal;
+	padding-left: 0;
+}
+
+ul ul,
+	ol ol {
+	margin-left: 1.5em; }
+
+li {
+	display: list-item; }
+
+dl {
+	display: block; }
+
+dt {
+	display: run-in; font-weight: bold; margin-right: 1ex;
+}
+
+dd {
+	display: block; margin-left: 3em;
+}
+
+dd + dd {
+	text-indent: -1.5em; }
+
+/* address */ address {
+	display: block; font-style: italic; text-align: center;
+}
+
+/* horizontal rule */ hr { }
+
+/* preformatted text */ pre {
+	background-color: #cccccc; color: #333333; border: thin solid
+	black; display: block; font-family: monospace; margin: 0.5em 0;
+	padding: 1em 1.5em; overflow: scroll;
+}
+
+blockquote + pre {
+	margin-bottom: -0.5em; margin-top: -0.5em;
+}
+
+/* block-like quotes */ blockquote {
+	display: block; margin: 1em 0; padding-left: 1.5em; max-width:
+	31.5em;
+}
+
+dd blockquote,
+	li blockquote {
+		margin-top: 0.5em; margin-bottom: 0.5em;
+	}
+
+/* inserted/deleted text */ ins {
+	/* remove if we just want to see the most recent version */ color:
+	#006600; text-decoration: underline;
+}
+
+del {
+	/* if we just want to see the most recent version */ /* display:
+	none; */ color: #660000; text-decoration: line-through;
+}
+
+/* the anchor element */ a {
+	display: inline; }
+
+a:link,
+	a:visited,
+		a:active {
+			font-weight: bold; text-decoration: none;
+		}
+
+/* inline elements */ span {
+	display: inline; }
+
+bdo {
+	display: inline; }
+
+br { }
+
+em {
+	display: inline; font-style: italic;
+}
+
+em em,
+	h1 em {
+		font-style: normal; }
+
+strong {
+	display: inline; font-weight: bold;
+}
+
+strong strong {
+	font-weight: normal; }
+
+dfn {
+	display: inline; }
+
+code {
+	display: inline; font-family: monospace; font-variant: normal;
+	text-transform: none;
+}
+
+samp {
+	display: inline; font-family: monospace; font-variant: normal;
+	text-transform: none;
+}
+
+kbd {
+	display: inline; font-family: monospace; font-variant: normal;
+	text-transform: none;
+}
+
+var {
+	display: inline; font-style: italic;
+}
+
+cite {
+	display: inline; }
+
+abbr {
+	display: inline; font-style: inherit;
+}
+
+acronym {
+	display: inline; font-style: inherit; font-variant: small-caps;
+	text-transform: lowercase;
+}
+
+q {
+	display: inline; }
+
+q:before {
+	content: open-quote; }
+
+q:after {
+	content: close-quote; }
+
+sub {
+	display: inline; font-size: 50%; font-weight: bolder;
+	vertical-align: sub;
+}
+
+sup {
+	display: inline; font-size: 50%; font-weight: bolder;
+	vertical-align: super;
+}
+
+tt {
+	display: inline; font-family: monospace; font-variant: normal;
+	text-transform: none;
+}
+
+i {
+	display: inline; font-style: italic;
+}
+
+b {
+	display: inline; font-weight: bold;
+}
+
+big {
+	display: inline; font-size: 120%; font-weight: normal;
+}
+
+small {
+	display: inline; font-size: 80%;
+}
+
+/* object */ object {
+	border: none; }
+
+param { }
+
+/* images */ img { }
+
+/* client-side image maps */ map { }
+
+area { }
+
+/* forms */ form {
+	margin: 0; padding: 0;
+}
+
+label { }
+
+input { }
+
+select { }
+
+optgroup { }
+
+option { }
+
+textarea { }
+
+fieldset { }
+
+legend { }
+
+button { }
+
+/* tables */ table {
+	margin: 1em auto; }
+
+caption {
+	font-size: 80%; margin: auto;
+}
+
+thead { }
+
+tfoot { }
+
+tbody { }
+
+colgroup { /* also hides col */
+	display: none; }
+
+tr { }
+
+th {
+	background-color: #cccccc; color: #333333; font-weight: normal;
+	padding: 0 1ex; text-align: center;
+}
+
+td { }
+
+/* ruby */ ruby {
+	display: inline; }
+
+rbc { }
+
+rtc { }
+
+rb {
+	display: inline; }
+
+rt {
+	color: #0000cc; display: inline; font-size: 55%;
+}
+
+rp {
+	display: none; }
+
+/**************************/ /* XHTML 1.0 Transitional */
+/**************************/
+
+/* frames */ iframe { }
+
+noframes { }
+
+/* lists */ menu { }
+
+dir { }
+
+/* text alignment */ center {
+	display: block; text-align: center;
+}
+
+/* inline elements */ u {
+	display: inline; text-decoration: underline;
+}
+
+s {
+	display: inline; text-decoration: line-through;
+}
+
+strike {
+	display: inline; text-decoration: line-through;
+}
+
+basefont {
+	display: none; }
+
+font {
+	display: inline; }
+
+/* Java applet */ applet { }
+
+/* forms */ isindex { }
+
+/**********************/ /* XHTML 1.0 Frameset */
+/**********************/
+
+/* frames */ frameset { }
+
+frame { }
+
+/************/ /* HTML 3.2 */ /************/
+
+/* preformatted text */ xmp {
+	display: block; font-family: monospace;
+}
+
+plaintext {
+	display: block; font-family: monospace;
+}
+
+
+/* Org */ div#content {
+	margin: 1em 3em; border: 2px solid #888; padding: 1em 2em;
+	background-color: #fff; }
+
+div#table-of-contents {
+	margin: 2em; border: 1px solid #ccc; padding: 0 2em;
+	background-color: #eee;
+}
+
+div#table-of-contents h2 {
+	margin: 0; padding: 1em; border-bottom: 1px solid #888;
+}
+
+.outline-2, .outline-3, .outline-4, .outline-5 {
+	margin-left: 2em; }
+
+</style>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
+ function CodeHighlightOn(elem, id) {
+   var target = document.getElementById(id); if(null != target) {
+     elem.cacheClassElem = elem.className; elem.cacheClassTarget =
+     target.className; target.className = "code-highlighted";
+     elem.className = "code-highlighted";
+   } } function CodeHighlightOff(elem, id) {
+   var target = document.getElementById(id); if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem; if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget; }
 /*]]>*///-->
 </script>
 
@@ -51,9 +413,22 @@ lang="en" xml:lang="en">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Bunny Doors </a></li>
-<li><a href="#sec-2">2 Open source!</a></li>
-<li><a href="#sec-3">3 Changelog</a></li>
+<li><a href="#sec-1">1 Bunny Doors </a>
+<ul>
+<li><a href="#sec-1-1">1.1 Features</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 Requirements </a>
+<ul>
+<li><a href="#sec-2-1">2.1 Protection Plugins</a></li>
+<li><a href="#sec-2-2">2.2 Vault:
+http://dev.bukkit.org/server-mods/vault/</a></li>
+<li><a href="#sec-2-3">2.3 Spout:
+http://dev.bukkit.org/server-mods/spout/</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 Open source!</a></li>
+<li><a href="#sec-4">4 Changelog</a></li>
 </ul>
 </div>
 </div>
@@ -64,7 +439,7 @@ lang="en" xml:lang="en">
 
 
 <p>
-  This plugin lets you lock specific doors on your server, with a particular key.  Only users with that key can open the door.  
+  This plugin lets you lock specific doors and chests on your server with a particular key.  Only players with that key can open the door.
 </p>
 <ul>
 <li><b>Quick Start</b> : <a href="https://github.com/jonnay/BunnyDoors/wiki/Quickstart">https://github.com/jonnay/BunnyDoors/wiki/Quickstart</a>
@@ -77,41 +452,127 @@ lang="en" xml:lang="en">
 
 
 <p>
-  There are plenty of plugins that give you specific custom permissions for doors but this plugin is different.  The point of this plugin is
-  to emulate old-school JRPG doors (Think Dragon Quest).  It aims to be easy for you to create doors that require keys.  I've been wanting
-  doors-with-permissions for a long time now, and decided to roll my own.
+  There are plenty of plugins that give you specific custom permissions for doors but this plugin is different.  The point of this plugin is to emulate old-school JRPG doors (Think Dragon Quest).  It aims to be easy for you to create doors that require keys.  I've been wanting doors-with-permissions for a long time now, and decided to roll my own.
 </p>
 <p>
-  Make Citizens NPCs give your players special keys for completing quests!  Give your theif Hero class the ability to pick locks!   Give
-  VIPs special access! So many possibilities!
+  Make Citizens NPCs give your players special keys for completing quests!  Give your theif Hero class the ability to pick locks!  Give VIPs special access! So many possibilities!
 </p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Features</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ul>
+<li>Create an unlimited number of doors, and an unlimited number of keys to unlock them!
+</li>
+<li>Use with any permissions system.
+</li>
+<li>Simple Spout integration, with more coming!
+</li>
+<li>Keys are implemented as permissions, so you can use it with a variety of other plugins to enhance your experience.
+</li>
+<li>With Vault installed, you can put keys inside of chests!
+</li>
+</ul>
+
+
+</div>
 </div>
 
 </div>
 
 <div id="outline-container-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Open source!</h2>
+<h2 id="sec-2"><span class="section-number-2">2</span> Requirements </h2>
 <div class="outline-text-2" id="text-2">
 
 
 <p>
-   I am leaning plugin development by looking at other peoples source, and basically standing upon the shoulders of bukkit giants. So NOT
-   making this plugin open source would be insane, and kinda lame.
+  Bunny Doors will work, as is, out of the box, without any other plugin.  It is HIGHLY recommended that you have a region protection plugin like Worldguard.  (If you know of any other region protection plugins, then I'd like to hear about them, so I can update this document)
 </p>
 <p>
-   Source code:  <a href="https://github.com/jonnay/BunnyDoors">https://github.com/jonnay/BunnyDoors</a>
+  The only requirements around a protection plugin, is they must block a user from placing or removing blocks in the area where your door is.
 </p>
 <p>
-   Instead of large grand plans, I have a set of very small discreet releases planned.  If anyone wants to help, they are more then welcome
-   to fork the repo, and I will pull the changes (assuming they work).  Please feel free down download an contribute.  
+  Beyond the protection plugin of your choice, if you have Spout or Vault installed, then BunnyDoors will give you extra functionality.  It's called progressive enhancement baby, and it rules.
 </p>
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Protection Plugins</h3>
+<div class="outline-text-3" id="text-2-1">
+
+<dl>
+<dt>WorldGuard</dt><dd><a href="http://dev.bukkit.org/server-mods/worldguard/">http://dev.bukkit.org/server-mods/worldguard/</a>
+</dd>
+</dl>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Vault: <a href="http://dev.bukkit.org/server-mods/vault/">http://dev.bukkit.org/server-mods/vault/</a></h3>
+<div class="outline-text-3" id="text-2-2">
+
+
+<ul>
+<li>Gives you access to the <code>/bunnykey give</code> command
+</li>
+<li>Allows keys to be put inside of chests
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Spout: <a href="http://dev.bukkit.org/server-mods/spout/">http://dev.bukkit.org/server-mods/spout/</a></h3>
+<div class="outline-text-3" id="text-2-3">
+
+
+<ul>
+<li>Allows keys to be put inside of chests
+</li>
+<li>Sends "Achievement Get!" style notifications when the user opens their inventory, or gets a key from a chest.
+</li>
+</ul>
+
+
+</div>
 </div>
 
 </div>
 
 <div id="outline-container-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Changelog</h2>
+<h2 id="sec-3"><span class="section-number-2">3</span> Open source!</h2>
 <div class="outline-text-2" id="text-3">
+
+
+<p>
+   I am leaning plugin development by looking at other peoples source, and basically standing upon the shoulders of bukkit giants. So NOT making this plugin open source would be insane, and kinda lame.
+</p>
+<p>
+   Source code: <a href="https://github.com/jonnay/BunnyDoors">https://github.com/jonnay/BunnyDoors</a>
+</p>
+<p>
+   Instead of large grand plans, I have a set of very small discreet releases planned.  If anyone wants to help, they are more then welcome to fork the repo, and I will pull the changes (assuming they work).  Please feel free down download an contribute.
+</p>
+<p>
+   finally, there is a better then even chance that at some point, I will stop developing this plugin (due to time constraints, hatred of writing java, or a case of hey-look-at-that-shiny-thing-over-there).  When that inevitability happens, I want to make sure that you, as a server admin, can update the plugin for whatever new version of Bukkit comes out.  It also means
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Changelog</h2>
+<div class="outline-text-2" id="text-4">
 
 <dl>
 <dt>0.1</dt><dd>First version
@@ -152,7 +613,7 @@ lang="en" xml:lang="en">
 </li>
 <li>Fixed a door bug where the bottom half of the door gets copied into the top
 </li>
-<li>Door info now displays more info about doors (i.e. who locked it)  It's prettier too.
+<li>Door info now displays more info about doors (i.e. who locked it) It's prettier too.
 </li>
 </ul>
 
@@ -160,7 +621,18 @@ lang="en" xml:lang="en">
 <dt>0.5</dt><dd>
 <ul>
 <li>Added very basic spout support through the notification interface.  Note that this is only a "soft dependency".  You don't need spout
-       to make it go! 
+       to make it go!
+</li>
+</ul>
+
+</dd>
+<dt>0.6</dt><dd>
+<ul>
+<li>Chests are now lockable too.
+</li>
+<li>Added API Call for other plugins
+</li>
+<li>A key can be put inside of chests with <code>/bunnykey put &lt;key&gt;</code> and taken out with <code>/bunnykey take</code>
 </li>
 </ul>
 
@@ -174,10 +646,11 @@ lang="en" xml:lang="en">
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2012-02-03 01:10:22 MST</p>
+<p class="date">Date: 2012-02-06 20:45:19 MST</p>
 <p class="author">Author: Jonathan Arkell</p>
 <p class="creator">Org version 7.7 with Emacs version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML
+1.0</a>
 
 </div>
 </body>
