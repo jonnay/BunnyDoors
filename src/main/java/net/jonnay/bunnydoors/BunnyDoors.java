@@ -113,6 +113,10 @@ public class BunnyDoors extends JavaPlugin {
 				e.printStackTrace();
 			}
 		}
+
+		// this is where we iterate over keys, and create them
+		foofoomagoo();
+		
         saveConfig();
 
 		hasExtendedPermissionSupport = this.setupPermissions();
@@ -215,9 +219,7 @@ public class BunnyDoors extends JavaPlugin {
 			p.sendMessage("You can't have a key given to you!  Tell your server admin to install vault!");
 			log.severe("No Vault support!  Can't give player "+p.getName()+" the BunnyKey "+key);
 			return false;
-		}
-
-	   
+		}  
 	}
 	
 	
