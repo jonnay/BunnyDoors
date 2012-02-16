@@ -19,6 +19,10 @@ public abstract class BunnyKey {
 	public static HashMap<String, BunnyKey> all() {
 		return keyring;
 	}
+
+	public static isValid(String key) {
+		keyring.contains(key);
+	}
 	
 	BunnyKey(String n) {
 		name = n;
@@ -31,11 +35,16 @@ public abstract class BunnyKey {
 	/**
 	 * Checks to see if the player p has the key
 	 */
-	public abstract boolean hasKey(Player p);
+	public abstract boolean has(Player p);
 
 	/**
 	 * called when the player uses the key on a valid door
 	 */
-	public abstract boolean useKey(Player p);
+	public abstract boolean use(Player p);
+
+	/**
+	 * called when giving a key to a player. Only really good for non-item based keys
+	 */
+	public abstract boolean grant(Player p);
 	
 }

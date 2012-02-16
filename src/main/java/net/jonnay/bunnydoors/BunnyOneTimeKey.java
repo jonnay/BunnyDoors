@@ -14,14 +14,18 @@ public class BunnyOneTimeKey extends BunnyKey {
 		this.materialId = materialId;
 	}
 	
-	public boolean hasKey(Player p) {
+	public boolean has(Player p) {
 		ItemStack stack = p.getInventory().getItemInHand();
 		return (stack.getTypeId() == this.materialId);
 	}
 
-	public boolean useKey(Player p) {
+	public boolean use(Player p) {
 		ItemStack stack = p.getInventory().getItemInHand();
 		p.getInventory().removeItem(new ItemStack(this.materialId, 1));
 		return true;
+	}
+
+	public bolean grant(Player p) {
+		p.getInventory().addItem(new ItemStack(this.materialId, 1));
 	}
 }

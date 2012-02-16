@@ -73,10 +73,6 @@ public class BunnyDoors extends JavaPlugin {
 		doorSerializer.save();
 	}
 
-	public List<String> getKeys() {
-		return getConfig().getStringList("keys");
-	}
-
 	public List<String> getKeysForPlayer(Player p) {
 		ArrayList<String> out = new ArrayList<String>(); 
 		for (String key : getKeys()) {
@@ -115,7 +111,7 @@ public class BunnyDoors extends JavaPlugin {
 		}
 
 		// this is where we iterate over keys, and create them
-		foofoomagoo();
+		createKeysFromConfig();
 		
         saveConfig();
 
@@ -125,24 +121,37 @@ public class BunnyDoors extends JavaPlugin {
 		System.out.println(this.toString() + " enabled");
 	}
 
-
-
-	public static String keyToPermission(String key) {
-		return "bunnydoors.key."+key;
+	public void reloadConfig() {
+		// config reload command here
+		BunnyKey.clear();
+		createKeysFromConfig();
 	}
 	
-	public boolean playerHasKey(String key, Player p) {
-		return p.hasPermission(keyToPermission(key));
+	private void createKeysFromConfig() {
+		TreeSet<String> usedKeys = new TreeSet<String>();
+		
+		for (String keyName : getConfig().getStringList("keys")) {
+			keyName = keyName.toLowerCase();
+			if (usedKeys.contains(keyName)) {
+				throw new RuntmeException("BunnyDoors Cannot add key "+keyName+", Duplicate key name!  Both Permission Keys and Item keys need to have unique names.");
+			}
+			
+			BunnyKey.add(keyName, new BunnyPermissionKey(keyName));
+		}
+
+		for (ItemStack s : getConfig().getItemStackList("itemkeys")) {
+			String keyName = s.getName().toLowerCase();
+			if (usedKeys.contains(keyName)) {
+				throw new RuntmeException("BunnyDoors Cannot add key "+keyName+", Duplicate key name!  Both Permission Keys and Item keys need to have unique names.");
+			}
+			BunnyKey.add(keyName, new BunnyOneTimeKey(keyName, s.getMaterialId()));
+		}
 	}
-	
+
 	private boolean keyholderHasAllPerms(Player keyholder) {
 		return ((keyholder != null) &&
 				(keyholder.hasPermission("bunnydoors.admin.alldoors")));
 				 
-	}
-
-	public boolean isValidKey(String key) {
-		return getKeys().contains(key);
 	}
 
 	public boolean lock(Block door, Player keyholder, String key) {
@@ -202,27 +211,6 @@ public class BunnyDoors extends JavaPlugin {
 		player.sendMessage("Use /bunnykey list to get a list of your keys!");
 	}
 
-	public boolean grantKey(Player p, String key) {
-		
-		if (hasExtendedPermissionSupport) {
-			permissions.playerAdd(p, BunnyDoors.keyToPermission(key));
-
-			if (SpoutManager.getPlayer(p).isSpoutCraftEnabled()) {
-				BunnyDoors.Debug("Sending notification for "+key);
-				SpoutManager.getPlayer(p).sendNotification("Key Find!", key, org.bukkit.Material.IRON_DOOR);
-			} else {
-				p.sendMessage("You found a key!  You found the "+key+" key!");
-			}
-			return true;
-						  
-		} else {
-			p.sendMessage("You can't have a key given to you!  Tell your server admin to install vault!");
-			log.severe("No Vault support!  Can't give player "+p.getName()+" the BunnyKey "+key);
-			return false;
-		}  
-	}
-	
-	
 	public boolean setupPermissions()
     {
 		try {
