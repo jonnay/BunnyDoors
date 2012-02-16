@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 public abstract class BunnyKey {
 
 	private String name;
+	
 	private static HashMap<String, BunnyKey> keyring = new HashMap<String, BunnyKey>();
 
 	public static void add(String name, BunnyKey key) {
@@ -20,11 +21,16 @@ public abstract class BunnyKey {
 		return keyring;
 	}
 
-	public static isValid(String key) {
-		keyring.contains(key);
+	public static boolean isValid(String key) {
+		return keyring.containsKey(key);
+	}
+
+	public static void clear() {
+		keyring = null;
+		keyring = new HashMap<String, BunnyKey>();
 	}
 	
-	BunnyKey(String n) {
+	public BunnyKey(String n) {
 		name = n;
 	}
 

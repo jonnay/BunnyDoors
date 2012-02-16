@@ -25,7 +25,8 @@ public class BunnyOneTimeKey extends BunnyKey {
 		return true;
 	}
 
-	public bolean grant(Player p) {
+	public boolean grant(Player p) {
 		p.getInventory().addItem(new ItemStack(this.materialId, 1));
+		return true;
 	}
 }

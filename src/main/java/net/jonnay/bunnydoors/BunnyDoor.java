@@ -124,11 +124,11 @@ public abstract class BunnyDoor {
 			return true;
 		}
 
-		return (key.hasKey(p));
+		return (key.has(p));
 	}
 
 	public boolean playerOpen(Player p) {
-		return canPlayerOpen(p) && getKey().useKey(p);
+		return canPlayerOpen(p) && getKey().use(p);
 	}
 	
 	// if we cache doors, invalidate here
