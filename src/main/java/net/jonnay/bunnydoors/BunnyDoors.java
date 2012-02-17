@@ -169,6 +169,11 @@ public class BunnyDoors extends JavaPlugin {
 		}
 	}
 
+	public void sendLockedMessage(Player player, String key) {
+		player.sendMessage("Sorry, That door is locked, you need the "+key+" key to open it.");
+		player.sendMessage("Use /bunnykey list to get a list of your keys!");
+	}
+	
 	private boolean parseAsInt(String s) {
 		return numberRegexPattern.matcher(s).matches();
 	}
@@ -179,6 +184,18 @@ public class BunnyDoors extends JavaPlugin {
 				 
 	}
 
+	// does this belong in BunnyPermissionKey? or here?
+	// it belongs here cause it is alla bout the config.
+	// it belongs on BunnyPermissionKey cause.. well..
+	public void addPermissionKey(String key) {
+		BunnyKey.add(key, new BunnyPermissionKey(key));
+		List<String> keys = getConfig().getStringList("keys");
+		keys.add(key);
+					
+		getConfig().set("keys", keys);
+		saveConfig();
+	}
+	
 	public boolean lock(Block door, Player keyholder, String key) {
 		if (!BunnyKey.isValid(key)) {
 			return false;
@@ -229,11 +246,6 @@ public class BunnyDoors extends JavaPlugin {
 		} else {
 			return false;
 		}
-	}
-
-	public void sendLockedMessage(Player player, String key) {
-		player.sendMessage("Sorry, That door is locked, you need the "+key+" key to open it.");
-		player.sendMessage("Use /bunnykey list to get a list of your keys!");
 	}
 
 	public boolean setupPermissions()

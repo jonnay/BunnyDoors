@@ -70,7 +70,7 @@ public class DoorListener implements Listener {
 			if (d.canPlayerOpen(player)) {
 				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new DoorCloser(d), DOOR_OPEN_TIME);
 			} else {
-				plugin.sendLockedMessage(player, d.getKey() );
+				plugin.sendLockedMessage(player, d.getKey().getName() );
 				event.setCancelled(true);
 				return;
 			}
@@ -80,7 +80,7 @@ public class DoorListener implements Listener {
 			BunnyDoors.Debug("Checking Chest");
 			BunnyChest c = (BunnyChest) d;
 			if (c.hasTreasureKey()) {
-				plugin.grantKey(player, c.getTreasureKey());		  
+				BunnyKey.get(c.getTreasureKey()).grant(player);		  
 			}
 		}
 		
