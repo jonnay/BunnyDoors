@@ -8,6 +8,8 @@ import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 import org.bukkit.block.Block;
 
+import java.util.Arrays;
+
 public class BunnyDoorsCommandExecutor implements CommandExecutor {
 	BunnyDoors plugin;
 	
@@ -48,7 +50,7 @@ public class BunnyDoorsCommandExecutor implements CommandExecutor {
 				return false;
 			}
 
-			if (!plugin.isValidKey(args[1])) {
+			if (!BunnyKey.isValid(args[1])) {
 				sender.sendMessage(ChatColor.RED+" not a valid key.  Valid keys are: "+getValidKeysAsString());
 				return false;
 			}
@@ -66,11 +68,9 @@ public class BunnyDoorsCommandExecutor implements CommandExecutor {
 
 	// this probably needs to use a stringbuilder?
 	private String getValidKeysAsString() {
-		String out = "";
-		for (String key : plugin.getKeys()) {
-			out = out + key + " ";
-		}
-		return out;
+		
+		return Arrays.toString(plugin.getConfig().getStringList("keys").toArray()) +
+			Arrays.toString(plugin.getConfig().getStringList("itemkeys").toArray());
 	}
 
 	private boolean hasPerm(CommandSender sender, String perm) {
@@ -82,7 +82,7 @@ public class BunnyDoorsCommandExecutor implements CommandExecutor {
 		if (!hasPerm(s, "admin.reload"))
 			return false;
 
-		plugin.reloadConfig();
+		plugin.reloadBunnyDoorsConfig();
 		plugin.doorSerializer.reload();
 
 		s.sendMessage("Reloaded configuration");
@@ -92,7 +92,7 @@ public class BunnyDoorsCommandExecutor implements CommandExecutor {
 	
 	private void usage(CommandSender s) {
 		if (hasPerm(s, "lock")) {
-			s.sendMessage(usageLine("lockall", "Locks all the doors!"));
+			s.sendMessage(usageLine("lockall", "Lock all the doors!"));
 			s.sendMessage(usageLine("unlockall","Unlock all the doors!"));
 			s.sendMessage(usageLine("lock", "key", "Locks a door with the given key"));
 			s.sendMessage(usageLine("unlock", "Unlock a door"));

@@ -1,9 +1,55 @@
 
 # BunnyDoors Configuration File
-# Right now there is just a list of available keys.  Super easy.
-#
-# (notice the nod to Dragon Quest!)
+# For more information about this file, please see:
+# https://github.com/jonnay/BunnyDoors/wiki/Config
+
+# Collect (quasi) anonymous usage stats?  Use false to opt the heck out.
+devilstats: true
+
+# Special Note! 
+# Key names NEED to be unique!  If they are not, the plugin won't load 
+# properly. 
+
+# Permission Keys
+# Each key listed here will have an associated permission of
+# bunnydoors.key.<keyname> Which allows for keys to remain with the user
+# regardless how many times they are used.  They can also be granted on a
+# per-group basis (Depending on your permisson plugin of course). 
 keys:
   - thief
   - magic
   - final
+
+# Item Keys
+# Items keys are single-use keys.  Once a user unlocks a door, that key is
+# removed from their inventory.
+# The default is to use the records, because they are all similar looking, have
+# different colors, and are vaguely key shaped.  Err... kinda-sorta. Maybe.
+# Work with me.
+# You could theoretically use any item here you like, but you may want to use
+# items that are difficult or impossible to get except for through /give
+# Some other options are:
+#  - REDSTONE_TORCH_OFF
+#  - FIRE
+#  - DEAD_BUSH
+#  - STATIONARY_WATER
+#  - STATIONARY_LAVA
+#  - REDSTONE_WIRE
+#  - FARMLAND
+#  - SUGAR_CANE
+# For a full list of possibilities see:
+# http://www.minecraftwiki.net/wiki/Data_values#Block_IDs_.28Minecraft_Official_Release.29
+# For a list of material names, see:
+# http://jd.bukkit.org/apidocs/org/bukkit/Material.html
+itemkeys: 
+  - green_record
+  - gold_record
+  - record_3
+  - record_4
+  - record_5
+  - record_6
+  - record_7
+  - record_8
+  - record_9
+  - record_10
+  - record_11

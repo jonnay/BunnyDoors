@@ -43,17 +43,19 @@ public class BunnyKeyInventoryListener implements Listener {
 			BunnyDoors.Debug("Found Spout, sending popups");
 			
 			String msg = "";
+
 			// Strike 2 other location:  BunnyKeysCommandExecutor(anon.list)
-			for (String key: plugin.getKeys()) {
-				if (plugin.playerHasKey(key,p)) {
+			for (String key: BunnyPermissionKey.getKeysForPlayer(p)) {
+				if (BunnyPermissionKey.hasKey(key,p)) {
 					msg += key + " ";
 				}
 				SpoutManager.getPlayer(p).sendNotification("Keys You Hold:", msg, org.bukkit.Material.WOOD_DOOR);
 			}
 		} else {
 			// send message with list of keys
-			BunnyDoors.Debug("Sending standard keys to player:"+Arrays.toString(plugin.getKeys().toArray()) );
-			p.sendMessage("You are also holding the following keys: "+Arrays.toString(plugin.getKeys().toArray()));
+			BunnyDoors.Debug("Sending standard keys to player:"+Arrays.toString(BunnyPermissionKey.getKeysForPlayer(p).toArray()) );
+			// getKeys().toArray ... bad.
+			p.sendMessage("You are also holding the following keys: "+Arrays.toString(BunnyPermissionKey.getKeysForPlayer(p).toArray()));
 		}
 	}
 	/*

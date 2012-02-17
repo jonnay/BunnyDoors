@@ -56,7 +56,7 @@ public abstract class BunnyDoor {
 
 
 	protected String id;
-	protected String key;
+	protected BunnyKey key;
 	protected String locker;
 	protected Block block;
 	protected boolean nativeDoor;
@@ -73,7 +73,7 @@ public abstract class BunnyDoor {
 		return id;
 	}
    
-	public String getKey() {
+	public BunnyKey getKey() {
 		return key;
 	}
 
@@ -90,9 +90,13 @@ public abstract class BunnyDoor {
 	}
 
 	public void setKey(String key) {
-		this.key = key;
+		this.key = BunnyKey.get(key);
 	}
 
+	public void setKey(BunnyKey key) {
+		this.key = key;
+	}
+	
 	public void setLocker(String locker) {
 		this.locker = locker;
 	}
@@ -106,7 +110,7 @@ public abstract class BunnyDoor {
 	}
 	
 	public boolean isLocked() {
-		String key = getKey();
+		BunnyKey key = getKey();
 		if (key == null) {
 			BunnyDoors.Debug("No key for door "+id);
 			return false;
@@ -115,24 +119,25 @@ public abstract class BunnyDoor {
 	}
 
 	public boolean canPlayerOpen(Player p) {
-		String key = getKey();
+		BunnyKey key = getKey();
 		if (key == null) {
 			return true;
 		}
-		boolean perm = plugin.playerHasKey(key, p);
 
-		BunnyDoors.Debug("checking door "+id+" for key:"+key+" bunnydoors.key."+key+" is: "+perm);
-
-		return perm;  // if the keyholder doesn't have permission, then it IS locked.
+		return (key.has(p));
 	}
 
+	public boolean playerOpen(Player p) {
+		return canPlayerOpen(p) && getKey().use(p);
+	}
+	
 	// if we cache doors, invalidate here
 	public boolean lock(Player p, String key) {
 		String locker = p.getName();
 		BunnyDoor.plugin.doorSerializer.setDoorToKey(id, locker, key);
 		nativeDoor = false;
 		this.locker = locker;
-		this.key = key;
+		this.key = BunnyKey.get(key);
 		return true;
 	}
 
@@ -150,6 +155,5 @@ public abstract class BunnyDoor {
 	
 	public void close() {
 		setDoorState(false);
-		
 	}
 }

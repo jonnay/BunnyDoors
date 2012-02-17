@@ -2,7 +2,7 @@
                                 ======
 
 Author: Jonathan Arkell
-Date: 2012-02-06 20:45:12 MST
+Date: 2012-02-17 00:09:18 MST
 
 
 Table of Contents
@@ -110,5 +110,8 @@ Table of Contents
      - Chests are now lockable too.
      - Added API Call for other plugins
      - A key can be put inside of chests with ~/bunnykey put <key>~ and taken out with ~/bunnykey take~
-
+   0.7:
+     - Fixed a problem with the keys being listed in the inventory for non-spoutcraft clients
+     - Trap Doors are lockable!
+     - Item Keys!
 

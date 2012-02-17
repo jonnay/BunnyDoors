@@ -29,8 +29,8 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 					Player p = (Player) s;
 
 					// Strike 2 ... other location: BunnykeyInventoryListner.showKeys
-					for (String key : plugin.getKeys()) {
-						if (plugin.playerHasKey(key, p)) {
+					for (String key : BunnyPermissionKey.getKeysForPlayer(p)) {
+						if (BunnyPermissionKey.hasKey(key, p)) {
 							out += key + " ";
 						} 
 					}
@@ -60,7 +60,7 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 
 					BunnyDoors.Debug("Checking key "+args[2]);
 					
-					if (!plugin.isValidKey(args[2])) {
+					if (!BunnyKey.isValid(args[2])) {
 						return error(s, args[2] + " is not a valid key");
 					}
 
@@ -71,7 +71,9 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 						return error(s, "Not a valid Player name");
 					}
 
-					if (plugin.grantKey(target, args[2])) {
+					BunnyKey k = BunnyKey.get(args[2]);
+					
+					if (k.grant(target)) {
 						error(s, "Could not grant the key!  Check the logs for the reason why!");
 					}
 					
@@ -96,12 +98,12 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 						error(s, "You aren't looking at a chest!");
 					}
 					
-					if (!plugin.hasExtendedPermissionSupport) {
+					if (!BunnyDoors.hasExtendedPermissionSupport) {
 						error(s, "You need Vault installed so that users can take keys!");
 						s.sendMessage("The key has been added, but install Vault so that your users can take it.");
 					}
 
-					if (!plugin.isValidKey(args[1])) {
+					if (!BunnyKey.isValid(args[1])) {
 						error(s, args[1] + " is not a valid key");
 						return false;
 					}
@@ -154,11 +156,7 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 						return false;
 					}
 
-					List<String> keys = plugin.getKeys();
-					keys.add(args[1]);
-					
-					plugin.getConfig().set("keys", keys);
-					plugin.saveConfig();
+					plugin.addPermissionKey(args[1]);
 
 					s.sendMessage("Added key "+args[1]);
 					return true;
@@ -176,7 +174,7 @@ public class BunnyKeysCommandExecutor extends BunnyCommandExecutor {
 				
 
 				public boolean run(CommandSender s, String[] args) {
-					s.sendMessage(plugin.getKeys().toString());
+					s.sendMessage(plugin.getConfig().getStringList("keys").toString());
 					return true;
 				}
 
