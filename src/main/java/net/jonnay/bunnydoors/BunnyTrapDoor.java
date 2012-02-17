@@ -2,13 +2,13 @@ package net.jonnay.bunnydoors;
 
 import org.bukkit.entity.Player;
 import org.bukkit.Material;
-import org.bukkit.material.Door;
+import org.bukkit.material.TrapDoor;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.Effect;
 
 
-public class TrapBlockDoor extends BunnyDoor {
+public class BunnyTrapDoor extends BunnyDoor {
 	
 	protected static BunnyDoors plugin;
 
@@ -20,7 +20,7 @@ public class TrapBlockDoor extends BunnyDoor {
 		return b;
 	}
 	
-	public (Block b) {
+	public BunnyTrapDoor(Block b) {
 		setId(createIdFromBlock(getIdBlockFromBlock(b)));
 		setKey(BunnyDoor.plugin.doorSerializer.getDoorKey(id));
 		setLocker(BunnyDoor.plugin.doorSerializer.getDoorLocker(id));		
@@ -31,11 +31,15 @@ public class TrapBlockDoor extends BunnyDoor {
 
 		TrapDoor door = (TrapDoor) block.getType().getNewData(block.getData());
 
-		if (state)
-			door.setData(door.getData() | 0x4);
-		else // do alternate bitwise arithmagick
-			door.setData(door.getData() & (~0x4));
+		// fuck you java.  Learn type inference you bitch.
+		byte data = door.getData();
+		if (state) {
+			data = (byte) (data | ((byte) 0x4));
+		} else {
+			data = (byte) (data & ((byte) ~0x4));
+		}
 
+		door.setData(data);
 		block.setData(door.getData(), true);
 		
 		block.getWorld().playEffect(block.getLocation(), Effect.DOOR_TOGGLE, 0);

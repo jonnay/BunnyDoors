@@ -49,8 +49,8 @@ public abstract class BunnyDoor {
 		} else if (BunnyChest.isChest(b)) {
 			Block idBlock = BunnyChest.getIdBlockFromBlock(b);
 			return new BunnyChest(idBlock);
-		} else if (bunnyTrapDoor.isTrapDoor(b)) {
-			Block idblock = BunnyTrapDoor.getIdBlockFromBlock(b);
+		} else if (BunnyTrapDoor.isTrapDoor(b)) {
+			Block idBlock = BunnyTrapDoor.getIdBlockFromBlock(b);
 			return new BunnyTrapDoor(idBlock);
 		} else {
 			BunnyDoors.log.severe("Can't construct the door from the block!");
