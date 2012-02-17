@@ -243,9 +243,6 @@ cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
 [INFO] ------------------------------------------------------------------------
 [INFO] Building Bunny Doors 0.7.0
 [INFO] ------------------------------------------------------------------------
-Downloading: http://repo.bukkit.org/content/groups/public/org/getspout/spoutpluginapi/dev-SNAPSHOT/maven-metadata.xml
-Downloading: http://repo.getspout.org/org/getspout/spoutpluginapi/dev-SNAPSHOT/maven-metadata.xml
-773 B                   Downloaded: http://repo.getspout.org/org/getspout/spoutpluginapi/dev-SNAPSHOT/maven-metadata.xml (773 B at 0.8 KB/sec)
 [INFO] 
 [INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ BunnyDoors ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
@@ -284,8 +281,8 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 12.852s
-[INFO] Finished at: Fri Feb 17 00:04:02 MST 2012
+[INFO] Total time: 13.150s
+[INFO] Finished at: Fri Feb 17 00:09:43 MST 2012
 [INFO] Final Memory: 10M/81M
 [INFO] ------------------------------------------------------------------------
 target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
