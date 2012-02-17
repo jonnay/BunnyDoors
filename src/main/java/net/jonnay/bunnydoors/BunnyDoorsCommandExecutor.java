@@ -82,7 +82,7 @@ public class BunnyDoorsCommandExecutor implements CommandExecutor {
 		if (!hasPerm(s, "admin.reload"))
 			return false;
 
-		plugin.reloadConfig();
+		plugin.reloadBunnyDoorsConfig();
 		plugin.doorSerializer.reload();
 
 		s.sendMessage("Reloaded configuration");

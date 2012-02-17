@@ -114,8 +114,9 @@ public class BunnyDoors extends JavaPlugin {
 		System.out.println(this.toString() + " enabled");
 	}
 
-	public void reloadConfig() {
+	public void reloadBunnyDoorsConfig() {
 		// config reload command here
+		reloadConfig();
 		BunnyKey.clear();
 		createKeysFromConfig();
 	}

@@ -181,9 +181,10 @@ catch NumberFormatException e
 ** Run
 #+begin_src emacs-lisp 
 (save-excursion
+ (set-buffer "Config.org")
+ (org-babel-tangle)
  (set-buffer "Readme.org")
  (let ((fill-column 80))
-   (org-babel-tangle)
    (org-export-as-ascii 3))
  ;(let ((fill-column 9999))
  ;  (org-export-as-html 2 nil nil nil 1))
@@ -242,13 +243,16 @@ cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
 [INFO] ------------------------------------------------------------------------
 [INFO] Building Bunny Doors 0.7.0
 [INFO] ------------------------------------------------------------------------
+Downloading: http://repo.bukkit.org/content/groups/public/org/getspout/spoutpluginapi/dev-SNAPSHOT/maven-metadata.xml
+Downloading: http://repo.getspout.org/org/getspout/spoutpluginapi/dev-SNAPSHOT/maven-metadata.xml
+773 B                   Downloaded: http://repo.getspout.org/org/getspout/spoutpluginapi/dev-SNAPSHOT/maven-metadata.xml (773 B at 0.8 KB/sec)
 [INFO] 
 [INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ BunnyDoors ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Copying 3 resources
 [INFO] 
 [INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ BunnyDoors ---
-[INFO] Compiling 2 source files to /Users/jonathana/projects/BunnyDoors/target/classes
+[INFO] Compiling 3 source files to /Users/jonathana/projects/BunnyDoors/target/classes
 [INFO] 
 [INFO] --- maven-resources-plugin:2.4.3:testResources (default-testResources) @ BunnyDoors ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
@@ -280,8 +284,8 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 3.546s
-[INFO] Finished at: Thu Feb 16 23:12:19 MST 2012
+[INFO] Total time: 12.852s
+[INFO] Finished at: Fri Feb 17 00:04:02 MST 2012
 [INFO] Final Memory: 10M/81M
 [INFO] ------------------------------------------------------------------------
 target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
