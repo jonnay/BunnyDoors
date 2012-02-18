@@ -126,15 +126,18 @@
    CLOSED: [2012-02-06 Mon 11:50]
 *** DONE Plugin permissions in plugin.yaml
 	 CLOSED: [2012-02-06 Mon 11:50]
-** PROJECT 0.6
-*** PROJECT Chests
+** FINISHED 0.6
+   CLOSED: [2012-02-17 Fri 00:58]
+*** FINISHED Chests
+	 CLOSED: [2012-02-17 Fri 00:58]
 **** TODO test protection of chests
 **** TODO Test keys inside chests
 ***** TODO add debug
 **** TODO Fix info to only infoize if it can cast
 ** PROJECT 0.7
 *** DONE Fixed a bug where the keys listed in the inventory is ALL THE KEYS.
-*** PROJECT Single use keys
+*** FINISHED Single use keys
+	 CLOSED: [2012-02-17 Fri 00:58]
 **** DONE Update default config to set options
 	 CLOSED: [2012-02-16 Thu 23:08]
 **** DONE Add Item node to key
@@ -163,10 +166,14 @@ catch NumberFormatException e
 // ItemStack stack = player.getInventory().getItemInHand();
 // inventory.removeItem(new ItemStack (Mat, Int))  --> perdog http://forums.bukkit.org/threads/removing-items-from-inventories.49387/
 
-*** PROJECT Players grant specific keys with bunnydoor.keymaster.<key> permission
-*** PROJECT Trap Doors
+*** FINISHED Trap Doors
+	 CLOSED: [2012-02-17 Fri 00:58]
 *** PROJECT less spammy
+*** PROJECT Config value for timer to close door
+*** PROJECT If the door is closed, then stop the timer. 
 ** PROJECT 0.8 Integration release
+*** PROJECT Players grant specific keys with bunnydoor.keymaster.<key> permission
+
 *** PROJECT Iron Door opening, block-based-key
 
 *** PROJECT when a door is modified it should throw event
@@ -180,21 +187,19 @@ catch NumberFormatException e
 * Test
 ** Run
 #+begin_src emacs-lisp 
-(save-excursion
- (set-buffer "Config.org")
- (org-babel-tangle)
- (set-buffer "Readme.org")
- (let ((fill-column 80))
-   (org-export-as-ascii 3))
- ;(let ((fill-column 9999))
- ;  (org-export-as-html 2 nil nil nil 1))
-)
- 
 (mcstat-run-minecraft)
 (pop-to-buffer "*mcstat-mc*")
 #+end_src
 
 #+results:
+
+** Server Launch
+(defun mcstat-run-minecraft ()
+  "runs a mongo db instance"
+  (interactive)
+  (comint-simple-send (make-comint "mcstat-mc" "bash") "/Users/jonathana/projects/mineCraftStatus/server/LaunchServer.command")
+  (pop-to-buffer "*mcstat-mc*")
+)
   
 ** Acceptence Tests
    - [ ] All Pass?
@@ -231,6 +236,23 @@ scp -v target/BunnyDoors.jar jonny@70.75.70.233:/usr/local/minecraft/server/plug
 
 * Build
 
+#+begin_src sh
+mvn clean
+#+end_src
+
+#+results:
+
+#+begin_src emacs-lisp 
+ (set-buffer "Config.org")
+ (org-babel-tangle)
+ (set-buffer "Readme.org")
+ (let ((fill-column 80))
+   (org-export-as-ascii 3))
+#+end_src
+
+#+results:
+: #<buffer Readme.txt>
+
 #+begin_src sh :results output
 mvn install
 cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
@@ -249,7 +271,7 @@ cp -v target/BunnyDoors.jar ../mineCraftStatus/server/plugins/
 [INFO] Copying 3 resources
 [INFO] 
 [INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ BunnyDoors ---
-[INFO] Compiling 3 source files to /Users/jonathana/projects/BunnyDoors/target/classes
+[INFO] Compiling 19 source files to /Users/jonathana/projects/BunnyDoors/target/classes
 [INFO] 
 [INFO] --- maven-resources-plugin:2.4.3:testResources (default-testResources) @ BunnyDoors ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
@@ -281,8 +303,8 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 13.150s
-[INFO] Finished at: Fri Feb 17 00:09:43 MST 2012
+[INFO] Total time: 7.644s
+[INFO] Finished at: Sat Feb 18 13:35:09 MST 2012
 [INFO] Final Memory: 10M/81M
 [INFO] ------------------------------------------------------------------------
 target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
@@ -295,6 +317,6 @@ target/BunnyDoors.jar -> ../mineCraftStatus/server/plugins/BunnyDoors.jar
 	- esp. ACStache 
   - McMMO devs for providing a decent pom.xml
   - LWC devs, for opening their source
-  - Multiverse, for having awesome documentaiton.
+  - Multiverse, for having awesome documentation.
 
 

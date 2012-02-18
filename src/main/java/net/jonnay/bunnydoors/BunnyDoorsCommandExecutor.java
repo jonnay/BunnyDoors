@@ -145,7 +145,7 @@ public class BunnyDoorsCommandExecutor implements CommandExecutor {
 		Block b = p.getTargetBlock(null, 10);
 
 		String msg = "Info: "+
-			ChatColor.LIGHT_PURPLE + "Meta: " + ChatColor.WHITE + Byte.toString(b.getData())+"  "+
+			ChatColor.LIGHT_PURPLE + "Raw Block Data: " + ChatColor.WHITE + Byte.toString(b.getData())+"  "+
 			ChatColor.LIGHT_PURPLE + "World: " + ChatColor.WHITE + b.getWorld().getName()+"  "+
 			ChatColor.LIGHT_PURPLE + "x: " + ChatColor.WHITE + b.getX()+" "+
 			ChatColor.LIGHT_PURPLE + "y: " + ChatColor.WHITE + b.getY()+" "+
@@ -161,7 +161,8 @@ public class BunnyDoorsCommandExecutor implements CommandExecutor {
 		} else {
 			sender.sendMessage(ChatColor.LIGHT_PURPLE + "Bunny Door");
 			sender.sendMessage(ChatColor.LIGHT_PURPLE + "ID: " + ChatColor.WHITE + d.getId() + "  " );
-			sender.sendMessage(ChatColor.LIGHT_PURPLE + "Key: " + ChatColor.WHITE + d.getKey()+ "  ");
+			sender.sendMessage(ChatColor.LIGHT_PURPLE + "Key " + ChatColor.WHITE + d.getKey().getName() +" "); 
+			sender.sendMessage(ChatColor.LIGHT_PURPLE + "KeyClass: " + ChatColor.WHITE + d.getKey()+ "  ");
 			sender.sendMessage(ChatColor.LIGHT_PURPLE + "Locked By: " + ChatColor.WHITE + d.getLocker());
 			if (BunnyChest.isChest(b)) {
 				sender.sendMessage(ChatColor.LIGHT_PURPLE+ "Contains Key: " + ChatColor.WHITE + ((BunnyChest)d).getTreasureKey());

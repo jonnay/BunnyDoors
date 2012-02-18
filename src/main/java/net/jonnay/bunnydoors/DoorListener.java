@@ -68,7 +68,7 @@ public class DoorListener implements Listener {
 		BunnyDoor d = BunnyDoor.getFromBlock(block);
 		if (d.isLocked()) {
 			if (d.canPlayerOpen(player) && d.playerOpen(player)) {
-				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new DoorCloser(d), DOOR_OPEN_TIME);
+				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new DoorCloser(d), (plugin.getConfig().getInt("closeDoorAfter",10) * 20));
 			} else {
 				plugin.sendLockedMessage(player, d.getKey().getName() );
 				event.setCancelled(true);

@@ -6,6 +6,13 @@
 # Collect (quasi) anonymous usage stats?  Use false to opt the heck out.
 devilstats: true
 
+# How soon since the last text notification to vanilla clients before
+# sending another.  In Seconds.  0 Disables text notifications.
+notifyVanillaClientsOn: 250
+
+# How many seconds after the door is open to close itx.
+closeDoorAfter: 5
+
 # Special Note! 
 # Key names NEED to be unique!  If they are not, the plugin won't load 
 # properly. 

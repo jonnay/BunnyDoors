@@ -86,6 +86,11 @@
      - Fixed a problem with the keys being listed in the inventory for non-spoutcraft clients
      - Trap Doors are lockable!
      - Item Keys!
+     - Config option to set when the door auto-closes (closeDoorAfter)
+     - Config option on to control when the key notification text is sent to vanilla clients (notifyVanillaClientsOn)  use 0 to disable it
+       completely
+
+
 
 # Local Variables:
 # tab-width: 8

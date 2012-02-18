@@ -18,11 +18,17 @@ import org.getspout.spoutapi.gui.GenericLabel;
 import org.getspout.spoutapi.SpoutManager;
 
 import java.util.Arrays;
+import java.util.Hashtable;
          
 public class BunnyKeyInventoryListener implements Listener {
 
 	private BunnyDoors plugin;
 
+	private static final int RUN_CLEAR_ON = 60 * 10;  // clear the hashmap of old player entries every 10 mins
+	
+	private static Hashtable<Player, Integer> NotificationMap = new Hashtable<Player, Integer>();
+	private static int LastClear;
+	
 	public BunnyKeyInventoryListener(BunnyDoors p) {
 		plugin = p;
 		BunnyDoors.Debug("registering inventorylistener");
@@ -40,25 +46,63 @@ public class BunnyKeyInventoryListener implements Listener {
 
 	void showKeys(Player p) {
 		if (SpoutManager.getPlayer(p).isSpoutCraftEnabled()) {
-			BunnyDoors.Debug("Found Spout, sending popups");
-			
-			String msg = "";
-
-			// Strike 2 other location:  BunnyKeysCommandExecutor(anon.list)
-			for (String key: BunnyPermissionKey.getKeysForPlayer(p)) {
-				if (BunnyPermissionKey.hasKey(key,p)) {
-					msg += key + " ";
-				}
-				SpoutManager.getPlayer(p).sendNotification("Keys You Hold:", msg, org.bukkit.Material.WOOD_DOOR);
-			}
+			sendSpoutNotification(p);
 		} else {
-			// send message with list of keys
-			BunnyDoors.Debug("Sending standard keys to player:"+Arrays.toString(BunnyPermissionKey.getKeysForPlayer(p).toArray()) );
-			// getKeys().toArray ... bad.
-			p.sendMessage("You are also holding the following keys: "+Arrays.toString(BunnyPermissionKey.getKeysForPlayer(p).toArray()));
+			if (playerShouldBeBugged(p)) {
+				sendVanillaNotification(p);
+			}
 		}
 	}
-	/*
+
+	private boolean playerShouldBeBugged(Player p) {
+		if (plugin.getConfig().getInt("notifyVanillaClientsOn",250) == 0) {
+			BunnyDoors.Debug("Not notifying vanilla clients.");
+			return false;
+		}
+		
+		if (!NotificationMap.containsKey(p)) {
+			NotificationMap.put(p, getUnixEpoc());
+			BunnyDoors.Debug("Not in notify list, notifying and putitng on list");
+			return true;
+		}
+		
+		if (getUnixEpoc() - NotificationMap.get(p) > plugin.getConfig().getInt("notifyVanillaClientsOn", 250)) {
+			NotificationMap.put(p, getUnixEpoc());
+			BunnyDoors.Debug("Past notification time. Hassling.");
+			return true;
+		} else {
+			BunnyDoors.Debug("Not past Notification time as set inside of hashmap. Not hassling.");
+			return false;
+		}
+	}
+
+	private int getUnixEpoc() {
+		return (int)(System.currentTimeMillis() / 1000L);
+	}
+
+	private void sendSpoutNotification(Player p) {
+		BunnyDoors.Debug("Found Spout, sending popups");
+		
+		String msg = "";
+		
+		// Strike 2 other location:  BunnyKeysCommandExecutor(anon.list)
+		for (String key: BunnyPermissionKey.getKeysForPlayer(p)) {
+			if (BunnyPermissionKey.hasKey(key,p)) {
+				msg += key + " ";
+			}
+			SpoutManager.getPlayer(p).sendNotification("Keys You Hold:", msg, org.bukkit.Material.WOOD_DOOR);
+		}
+	}
+	
+	private void sendVanillaNotification( Player p) {
+		// send message with list of keys
+		BunnyDoors.Debug("Sending standard keys to player:"+Arrays.toString(BunnyPermissionKey.getKeysForPlayer(p).toArray()) );
+		// getKeys().toArray ... bad.
+		p.sendMessage("You are also holding the following keys: "+Arrays.toString(BunnyPermissionKey.getKeysForPlayer(p).toArray()));
+	}
+
+	
+		/*
 	void showKey(Player p, String key) {
 		SpoutManager.getPlayer(p).sendNotification("Key", key, 
 		}*/
